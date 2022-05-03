@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.nyaruru.NyaruruFishyFight;
 import com.nyaruru.Reference;
 import com.nyaruru.world.biome.NBiomeRegister;
+import com.nyaruru.world.feature.NDarkForestFeatures;
 import com.nyaruru.world.feature.NStructureFeatures;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
