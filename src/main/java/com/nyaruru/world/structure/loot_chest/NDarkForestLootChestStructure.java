@@ -1,6 +1,7 @@
 package com.nyaruru.world.structure.loot_chest;
 
 import com.mojang.serialization.Codec;
+import com.nyaruru.Reference;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StructureBlock;
 import net.minecraft.util.Rotation;
@@ -27,6 +28,11 @@ public class NDarkForestLootChestStructure extends Structure<NoFeatureConfig> {
     @Override
     public GenerationStage.Decoration step() {
         return GenerationStage.Decoration.SURFACE_STRUCTURES;
+    }
+
+    @Override
+    public String getFeatureName() {
+        return Reference.MODID + ":dark_forest_loot_chest";
     }
 
     @Override
