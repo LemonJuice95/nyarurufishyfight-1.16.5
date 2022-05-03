@@ -43,6 +43,6 @@ public class NDarkForestBiome {
 
 
         return NBiomeRegister.makeBiome(Biome.Category.FOREST, Biome.RainType.RAIN, 0.1F, 0.3F, 0.6F, 0.8F,
-                effectBuilder.build(), mobBuilder.build(), generationSettings);
+                effectBuilder.build(), mobBuilder.build(), wrapper.build());
     }
 }
