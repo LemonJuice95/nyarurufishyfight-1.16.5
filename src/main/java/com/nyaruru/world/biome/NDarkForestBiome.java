@@ -41,8 +41,7 @@ public class NDarkForestBiome {
         BiomeGenerationSettingsBuilder wrapper = new BiomeGenerationSettingsBuilder(generationSettings);
         wrapper.getStructures().add(() -> NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
 
-
         return NBiomeRegister.makeBiome(Biome.Category.FOREST, Biome.RainType.RAIN, 0.1F, 0.3F, 0.6F, 0.8F,
-                effectBuilder.build(), mobBuilder.build(), wrapper.build());
+                effectBuilder.build(), mobBuilder.build(), generationSettings);
     }
 }
