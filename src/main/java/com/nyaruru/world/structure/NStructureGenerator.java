@@ -32,6 +32,11 @@ import java.util.Set;
 public class NStructureGenerator {
     private static Method GETCODEC_METHOD;
 
+    @SubscribeEvent
+    public static void onBiomeLoading(final BiomeLoadingEvent ev) {
+        ev.getGeneration().getStructures().add(() -> NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
+    }
+
     @SuppressWarnings("resource")
     @SubscribeEvent
     public static void addDimensionalSpacing(final WorldEvent.Load ev) {
