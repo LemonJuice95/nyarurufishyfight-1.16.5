@@ -1,0 +1,85 @@
+{
+  "//": "Items",
+  "item.nyaruru.deep_sea_tuna": "Deep Sea Tuna",
+  "item.nyaruru.esox_americanus": "Esox Americanus",
+  "item.nyaruru.hyneria_lindae": "Hyneria Lindae",
+  "item.nyaruru.eusthenopteron": "Eusthenopteron",
+
+  "item.nyaruru.cabbage": "Cabbage",
+  "item.nyaruru.canned_cat_food": "Canned Cat Food",
+  "item.nyaruru.mustard": "Mustard",
+  "item.nyaruru.garlic": "Garlic",
+  "item.nyaruru.chilli": "Chilli",
+  "item.nyaruru.surstromming": "Surstromming",
+
+  "item.nyaruru.copper_coin": "Copper Coin",
+  "item.nyaruru.silver_coin": "Silver Coin",
+  "item.nyaruru.gold_coin": "Gold Coin",
+  "item.nyaruru.cat_diamond": "Cat Diamond",
+
+  "item.nyaruru.emergency_potion": "Emergency Potion",
+  "item.nyaruru.thorn_dagger": "Thorn Dagger",
+
+  "item.nyaruru.red_jade_fish_eye": "Red Jade Fish Eye",
+  "item.nyaruru.aquamarine_fish_eye": "Aquamarine Fish Eye",
+
+  "//": "ItemTabs",
+  "itemGroup.nyaruruWeapons": "Nyaruru | Weapons",
+  "itemGroup.nyaruruAccessories": "Nyaruru | Accessories",
+  "itemGroup.nyaruruBlocks": "Nyaruru | Blocks",
+  "itemGroup.nyaruruMisc": "Nyaruru | Misc",
+
+  "//": "Blocks",
+  "block.nyaruru.thorns": "Thorns",
+  "block.nyaruru.spikes": "Spikes",
+  "block.nyaruru.bouncy_mushroom": "Bouncy Mushroom",
+
+  "//": "Entities",
+  "entity.nyaruru.fish_cross_slash": "Fish Cross Slash",
+
+  "//": "Biomes",
+  "biome.nyaruru.dark_forest": "Dark Forest",
+
+  "//": "ToolTips",
+  "tooltip.nyaruru.food.cabbage": "Restores 30% HP after eating",
+  "tooltip.nyaruru.food.canned_cat_food": "Restores 80% HP after eating",
+  "tooltip.nyaruru.food.mustard_1": "Lost 15% HP after eating",
+  "tooltip.nyaruru.food.mustard_2": "But provides a 2-minute Regeneration effect for you",
+  "tooltip.nyaruru.food.garlic": "Increases SP-regeneration for 2 minutes after eating",
+  "tooltip.nyaruru.food.pepper": "Regenerates Ultimate Skill Power slowly for 2 minutes after eating",
+  "tooltip.nyaruru.food.surstromming": "Provides a 25-second Resistance effect for you after eating",
+
+  "tooltip.nyaruru.deep_sea_tuna_skill": "Ultimate Skill: Fish Cross Slash",
+  "tooltip.nyaruru.deep_sea_tuna_power": "Consumes 100% Ultimate Skill Power",
+  "tooltip.nyaruru.esox_americanus_skill": "Ultimate Skill: Draw Fish Chopping",
+  "tooltip.nyaruru.esox_americanus_power": "Consumes 50% Ultimate Skill Power",
+  "tooltip.nyaruru.hyneria_lindae_skill": "Ultimate Skill: Fish Wave",
+  "tooltip.nyaruru.hyneria_lindae_power": "Consumes 75% Ultimate Skill Power",
+  "tooltip.nyaruru.eusthenopteron_skill": "Ultimate Skill: A Cat's Gaze",
+  "tooltip.nyaruru.eusthenopteron_power": "Consumes Ultimate Skill Power continuously until it's used up",
+
+  "tooltip.nyaruru.emergency_potion1": "",
+  "tooltip.nyaruru.emergency_potion2": "And get a Resistance V effect for 2.5s",
+
+  "//": "Resources",
+  "resource.nyaruru.money": "Money",
+  "resource.nyaruru.sp": "SP",
+  "resource.nyaruru.power": "Ultimate Skill Power",
+
+  "resource.nyaruru.adding_money": "Money Stack(constant)",
+  "resource.nyaruru.adding_money2": "Money Stack(variable)",
+  "resource.nyaruru.sprint_ticks": "Sprint Ticks",
+  "resource.nyaruru.sprint_times": "Sprint Time(Not on the ground)",
+  "resource.nyaruru.adding_power": "Power Stack",
+  "resource.nyaruru.first_get_into_the_world": "Is first get into the world",
+
+  "//": "KeyBinding",
+  "key.category.nyaruru": "Nyaruru Fishy Fight",
+  "key.nyaruru.sprint": "Sprint",
+  "key.nyaruru.sprint_back": "Sprint Back",
+  "key.nyaruru.fish_skill": "Fish Skill",
+
+  "//": "Effects",
+  "effect.nyaruru.sp_regenerating": "SP Regenerating",
+  "effect.nyaruru.power_regenerating": "Power Regenerating"
+}

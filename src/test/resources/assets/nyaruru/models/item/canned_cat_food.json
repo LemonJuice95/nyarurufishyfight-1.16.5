@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "nyaruru:item/canned_cat_food"
+  }
+}

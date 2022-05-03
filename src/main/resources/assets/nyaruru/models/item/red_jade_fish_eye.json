@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "nyaruru:item/red_jade_fish_eye"
+  }
+}
