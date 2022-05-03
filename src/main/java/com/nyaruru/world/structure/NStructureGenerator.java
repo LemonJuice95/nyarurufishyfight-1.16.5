@@ -29,12 +29,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-@Mod.EventBusSubscriber(modid = Reference.MODID)
 public class NStructureGenerator {
     private static Method GETCODEC_METHOD;
 
     @SuppressWarnings("resource")
-    @SubscribeEvent
     public static void addDimensionalSpacing(final WorldEvent.Load ev) {
         if(ev.getWorld() instanceof ServerWorld) {
             ServerWorld serverWorld = (ServerWorld) ev.getWorld();

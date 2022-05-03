@@ -30,14 +30,18 @@ public class NDarkForestBiome {
         DefaultBiomeFeatures.addDefaultMonsterRoom(generations);
         DefaultBiomeFeatures.addDefaultOres(generations);
 
-        generations.addStructureStart(NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
+//        generations.addStructureStart(NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_GRASS_FOREST.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.TREES.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))).decorated(Features.Placements.HEIGHTMAP_SQUARE));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.THORNS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.SPIKES.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.BOUNCY_MUSHROOMS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(20, 0.1F, 1))));
 
+        BiomeGenerationSettings generationSettings = generations.build();
+        BiomeGenerationSettingsBuilder wrapper = new BiomeGenerationSettingsBuilder(generationSettings);
+        wrapper.getStructures().add(() -> NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
+
         return NBiomeRegister.makeBiome(Biome.Category.FOREST, Biome.RainType.RAIN, 0.1F, 0.3F, 0.6F, 0.8F,
-                effectBuilder.build(), mobBuilder.build(), generations.build());
+                effectBuilder.build(), mobBuilder.build(), wrapper.build());
     }
 }

@@ -11,6 +11,7 @@ import com.nyaruru.proxy.CommonProxy;
 import com.nyaruru.world.biome.NBiomeRegister;
 import com.nyaruru.world.feature.NFeatureRegister;
 import com.nyaruru.world.feature.NStructureFeatures;
+import com.nyaruru.world.structure.NStructureGenerator;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.structure.IStructurePieceType;
@@ -49,6 +50,7 @@ public class NyaruruFishyFight {
         NStructureFeatures.STRUCTURES.register(FMLJavaModLoadingContext.get().getModEventBus());
         NFeatureRegister.FEATURES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, NStructureGenerator::addDimensionalSpacing);
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, NBiomeRegister::biomeModification);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
