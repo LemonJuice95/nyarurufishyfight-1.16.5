@@ -20,6 +20,8 @@ import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
+import javax.annotation.Nonnull;
+
 public class NDarkForestLootChestStructure extends Structure<NoFeatureConfig> {
     public NDarkForestLootChestStructure(Codec<NoFeatureConfig> p_i231998_1_) {
         super(p_i231998_1_);
@@ -48,6 +50,7 @@ public class NDarkForestLootChestStructure extends Structure<NoFeatureConfig> {
 
 
     @Override
+    @Nonnull
     public IStartFactory<NoFeatureConfig> getStartFactory() {
         return Start::new;
     }

@@ -31,7 +31,7 @@ import java.util.Map;
 public class NStructureFeatures {
     public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Reference.MODID);
 
-    public static final RegistryObject<Structure<NoFeatureConfig>> DARK_FOREST_LOOT_CHEST = STRUCTURES.register("dark_forest_loot_chest", () -> new NDarkForestLootChestStructure(NoFeatureConfig.CODEC));
+    public static final RegistryObject<Structure<NoFeatureConfig>> DARK_FOREST_LOOT_CHEST = STRUCTURES.register("dark_forest_loot_chest", () -> (new NDarkForestLootChestStructure(NoFeatureConfig.CODEC)));
     public static StructureFeature<?, ?> CONFIGURED_DARK_FOREST_LOOT_CHEST;
 
     public static IStructurePieceType DARK_FOREST_LOOT_CHEST_TYPE = setPieceId(NDarkForestLootChestPiece::new, "dark_forest_loot_chest");
@@ -42,7 +42,7 @@ public class NStructureFeatures {
 
     public static void setupStructures() {
         {
-            addStructure(DARK_FOREST_LOOT_CHEST.get(), new StructureSeparationSettings(60, 30, 998244353));
+            addStructure(DARK_FOREST_LOOT_CHEST.get(), new StructureSeparationSettings(25, 10, 1200013));
             CONFIGURED_DARK_FOREST_LOOT_CHEST = DARK_FOREST_LOOT_CHEST.get().configured(IFeatureConfig.NONE);
             Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, StringUtil.resPrefix("configured_dark_forest_loot_chest"), CONFIGURED_DARK_FOREST_LOOT_CHEST);
             FlatGenerationSettings.STRUCTURE_FEATURES.put(DARK_FOREST_LOOT_CHEST.get(), CONFIGURED_DARK_FOREST_LOOT_CHEST);
