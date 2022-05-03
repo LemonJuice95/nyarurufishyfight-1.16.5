@@ -61,11 +61,7 @@ public class NDarkForestLootChestStructure extends Structure<NoFeatureConfig> {
         }
 
         public void generatePieces(DynamicRegistries p_230364_1_, ChunkGenerator p_230364_2_, TemplateManager p_230364_3_, int p_230364_4_, int p_230364_5_, Biome p_230364_6_, NoFeatureConfig p_230364_7_) {
-            int i = p_230364_4_ * 16;
-            int j = p_230364_5_ * 16;
-            BlockPos blockpos = new BlockPos(i, 90, j);
-            Rotation rotation = Rotation.getRandom(this.random);
-            this.pieces.add(new NDarkForestLootChestPiece(p_230364_3_, NDarkForestLootChestPiece.STRUCTURE_LOCATION_CHEST, blockpos, rotation, 0));
+            this.pieces.add(new NDarkForestLootChestPiece(this.random, getChunkX() * 16, getChunkZ() * 16));
             this.calculateBoundingBox();
         }
     }
