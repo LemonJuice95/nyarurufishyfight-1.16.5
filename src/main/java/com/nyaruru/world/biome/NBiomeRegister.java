@@ -23,7 +23,7 @@ public class NBiomeRegister {
     public static final RegistryObject<Biome> DARK_FOREST = BIOMES.register("dark_forest", () -> NDarkForestBiome.getDarkForestBiome());
 
     public static void registerBiomes(final FMLCommonSetupEvent ev) {
-        registerBiome(DARK_FOREST.get(), BiomeManager.BiomeType.COOL, 50, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
+        registerBiome(DARK_FOREST.get(), BiomeManager.BiomeType.COOL, 30, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
     }
 
     public static void biomeModification(final BiomeLoadingEvent event) {
