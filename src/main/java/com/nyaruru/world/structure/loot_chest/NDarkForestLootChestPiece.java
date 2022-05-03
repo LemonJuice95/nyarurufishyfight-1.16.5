@@ -26,6 +26,7 @@ import net.minecraft.world.gen.feature.template.PlacementSettings;
 import net.minecraft.world.gen.feature.template.Template;
 import net.minecraft.world.gen.feature.template.TemplateManager;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -36,6 +37,10 @@ public class NDarkForestLootChestPiece extends TemplateStructurePiece {
 
     private final ResourceLocation templateLocation;
     private final Rotation rotation;
+
+    public static void generate(TemplateManager manager, BlockPos pos1, Rotation rotation, List<StructurePiece> list, Random random) {
+        list.add(new NDarkForestLootChestPiece(manager, STRUCTURE_LOCATION_CHEST, pos1, rotation, 0));
+    }
 
     public NDarkForestLootChestPiece(TemplateManager p_i49313_1_, ResourceLocation p_i49313_2_, BlockPos p_i49313_3_, Rotation p_i49313_4_, int p_i49313_5_) {
         super(NStructureFeatures.DARK_FOREST_LOOT_CHEST_TYPE, 0);
