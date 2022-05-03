@@ -49,7 +49,7 @@ public class NDarkForestLootChestStructure extends Structure<NoFeatureConfig> {
 
     @Override
     public Structure.IStartFactory getStartFactory() {
-        return NDarkForestLootChestStructure.Start::new;
+        return Start::new;
     }
 
     public static class Start extends StructureStart<NoFeatureConfig> {
