@@ -32,7 +32,7 @@ public class NStructureFeatures {
     public static final DeferredRegister<Structure<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Reference.MODID);
 
     public static final RegistryObject<Structure<NoFeatureConfig>> DARK_FOREST_LOOT_CHEST = STRUCTURES.register("dark_forest_loot_chest", () -> new NDarkForestLootChestStructure(NoFeatureConfig.CODEC));
-    public static StructureFeature<NoFeatureConfig, ? extends Structure<NoFeatureConfig>> CONFIGURED_DARK_FOREST_LOOT_CHEST;
+    public static StructureFeature<?, ?> CONFIGURED_DARK_FOREST_LOOT_CHEST;
 
     public static IStructurePieceType DARK_FOREST_LOOT_CHEST_TYPE = setPieceId(NDarkForestLootChestPiece::new, "dark_forest_loot_chest");
 
