@@ -29,7 +29,7 @@ public class NDarkForestBiome {
         DefaultBiomeFeatures.addDefaultMonsterRoom(generations);
         DefaultBiomeFeatures.addDefaultOres(generations);
 
-//        generations.addStructureStart(NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
+        generations.addStructureStart(NStructureFeatures.CONFIGURED_DARK_FOREST_LOOT_CHEST);
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, Features.PATCH_GRASS_FOREST.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.TREES.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))).decorated(Features.Placements.HEIGHTMAP_SQUARE));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.THORNS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
