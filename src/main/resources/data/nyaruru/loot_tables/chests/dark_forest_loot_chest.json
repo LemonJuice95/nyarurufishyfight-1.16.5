@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 4.0,
+        "max": 8.0,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 4
+        },
+        {
+          "name": "nyaruru:cabbage",
+          "type": "minecraft:item",
+          "weight": 6
+        },
+        {
+          "name": "nyaruru:canned_cat_food",
+          "type": "minecraft:item",
+          "weight": 6
+        },
+        {
+          "name": "nyaruru:copper_coin",
+          "type": "minecraft:item",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1.0,
+                "max": 2.0,
+                "type": "minecraft:uniform"
+              }
+            }
+          ]
+        },
+        {
+          "name": "nyaruru:silver_coin",
+          "type": "minecraft:item",
+          "weight": 8
+        },
+        {
+          "name": "nyaruru:gold_coin",
+          "type": "minecraft:item",
+          "weight": 4
+        },
+        {
+          "name": "nyaruru:cat_diamond",
+          "type": "minecraft:item",
+          "weight": 2
+        },
+        {
+          "name": "nyaruru:thorn_dagger",
+          "type": "minecraft:item",
+          "weight": 2
+        },
+        {
+          "name": "nyaruru:emergency_potion",
+          "type": "minecraft:item",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}
