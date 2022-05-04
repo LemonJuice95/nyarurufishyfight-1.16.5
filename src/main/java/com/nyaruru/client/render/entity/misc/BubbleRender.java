@@ -35,7 +35,7 @@ public class BubbleRender extends EntityRenderer<BubbleEntity> {
                 90.0F));
         p_225623_4_.mulPose(Vector3f.ZP.rotationDegrees(MathHelper.lerp(p_225623_3_, p_225623_1_.xRotO, p_225623_1_.xRot) + 180.0F));
         IVertexBuilder ivertexbuilder = net.minecraft.client.renderer.ItemRenderer.getFoilBuffer(p_225623_5_, this.model.renderType(this.getTextureLocation(p_225623_1_)), false, false);
-        this.model.renderToBuffer(p_225623_4_, ivertexbuilder, p_225623_6_, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.model.renderToBuffer(p_225623_4_, ivertexbuilder, p_225623_6_, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 0.65F);
         p_225623_4_.popPose();
     }
 
