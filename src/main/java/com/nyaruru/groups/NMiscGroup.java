@@ -12,6 +12,6 @@ public class NMiscGroup extends ItemGroup {
 
     @Override
     public ItemStack makeIcon(){
-        return new ItemStack(NItemRegister.GOLD_COIN.get());
+        return new ItemStack(NItemRegister.GOLD_CAT_COIN.get());
     }
 }

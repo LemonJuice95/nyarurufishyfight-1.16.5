@@ -1,8 +1,8 @@
 package com.nyaruru.items.coins;
 
-public class ItemSilverCoin extends NCoinBase{
+public class ItemSilverCatCoin extends NCoinBase{
     @Override
     public int getAmount() {
-        return 5;
+        return 400;
     }
 }

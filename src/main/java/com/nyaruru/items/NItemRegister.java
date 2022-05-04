@@ -37,10 +37,14 @@ public class NItemRegister {
     public static final RegistryObject<Item> AQUAMARINE_FISH_EYE = ITEMS.register("aquamarine_fish_eye", ItemAquamarineFishEye::new);
 
     //Misc
+    public static final RegistryObject<Item> COPPER_CAT_COIN = ITEMS.register("copper_cat_coin", ItemCopperCatCoin::new);
+    public static final RegistryObject<Item> SILVER_CAT_COIN = ITEMS.register("silver_cat_coin", ItemSilverCatCoin::new);
+    public static final RegistryObject<Item> GOLD_CAT_COIN = ITEMS.register("gold_cat_coin", ItemGoldCatCoin::new);
+    public static final RegistryObject<Item> CAT_DIAMOND = ITEMS.register("cat_diamond", ItemCatDiamond::new);
+
     public static final RegistryObject<Item> COPPER_COIN = ITEMS.register("copper_coin", ItemCopperCoin::new);
     public static final RegistryObject<Item> SILVER_COIN = ITEMS.register("silver_coin", ItemSilverCoin::new);
     public static final RegistryObject<Item> GOLD_COIN = ITEMS.register("gold_coin", ItemGoldCoin::new);
-    public static final RegistryObject<Item> CAT_DIAMOND = ITEMS.register("cat_diamond", ItemCatDiamond::new);
 
     //Foods
     public static final RegistryObject<Item> CABBAGE = ITEMS.register("cabbage",() -> new NFoodItem(NFoodItem.CABBAGE));

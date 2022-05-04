@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "nyaruru:item/silver_coin"
+    "layer0": "nyaruru:item/copper_cat_coin"
   }
 }

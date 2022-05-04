@@ -12,10 +12,13 @@
   "item.nyaruru.chilli": "辣椒",
   "item.nyaruru.surstromming": "鲱鱼易拉罐",
 
-  "item.nyaruru.copper_coin": "铜猫币",
-  "item.nyaruru.silver_coin": "银猫币",
-  "item.nyaruru.gold_coin": "金猫币",
+  "item.nyaruru.copper_cat_coin": "铜猫币",
+  "item.nyaruru.silver_cat_coin": "银猫币",
+  "item.nyaruru.gold_cat_coin": "金猫币",
   "item.nyaruru.cat_diamond": "猫钻",
+  "item.nyaruru.copper_coin": "铜币",
+  "item.nyaruru.silver_coin": "银币",
+  "item.nyaruru.gold_coin": "金币",
 
   "item.nyaruru.emergency_potion": "急救药水",
   "item.nyaruru.thorn_dagger": "反伤尖刺",

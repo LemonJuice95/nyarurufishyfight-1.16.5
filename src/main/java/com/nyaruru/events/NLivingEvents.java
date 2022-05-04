@@ -25,13 +25,6 @@ public class NLivingEvents {
                 PlayerEventHandler.onPlayerKillEntity( (PlayerEntity) killer, ev.getEntityLiving());
             }
         }
-
-        if((entity instanceof INyaruruEnemy) && !(entity instanceof INyaruruBoss)) {
-            Random random = new Random();
-            for(int i = 0; i <= random.nextInt(2); i++) {
-
-            }
-        }
     }
 
 }
