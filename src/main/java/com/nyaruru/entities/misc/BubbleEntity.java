@@ -1,29 +1,56 @@
 package com.nyaruru.entities.misc;
 
+import com.nyaruru.entities.api.IHasOwner;
 import com.nyaruru.utils.EntityUtil;
-import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MoverType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.IPacket;
-import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.UUID;
 
+public class BubbleEntity extends Entity implements IHasOwner {
+    protected Entity owner = null;
+    protected UUID ownerId = null;
 
-public class FishCrossSlashEntity extends Entity {
-
-    public FishCrossSlashEntity(EntityType<? extends FishCrossSlashEntity> type, World worldIn) {
+    public BubbleEntity(EntityType<? extends BubbleEntity> type, World worldIn) {
         super(type, worldIn);
+    }
+
+    public BubbleEntity(EntityType<? extends BubbleEntity> type, World worldIn, Entity entity) {
+        super(type, worldIn);
+        this.owner = entity;
+        this.ownerId = entity.getUUID();
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundNBT compound) {
+        if (this.ownerId != null) {
+            compound.put("owner", NBTUtil.createUUID(this.ownerId));
+        }
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundNBT compound) {
+        this.owner = null;
+        if (compound.contains("owner", 10)) {
+            this.ownerId = NBTUtil.loadUUID(compound.getCompound("owner"));
+        }
+        if(this.level instanceof ServerWorld)
+            this.owner = ((ServerWorld) this.level).getEntity(this.ownerId);
     }
 
     @Override
@@ -32,35 +59,29 @@ public class FishCrossSlashEntity extends Entity {
     }
 
     @Override
-    protected void defineSynchedData() {
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundNBT compound) {
-
-    }
-
-    @Override
-    public void addAdditionalSaveData(CompoundNBT compound) {
+    public void defineSynchedData() {
     }
 
     @Override
     public IPacket<?> getAddEntityPacket() {
-        PacketBuffer pack = new PacketBuffer(Unpooled.buffer());
-        pack.writeDouble(getX());
-        pack.writeDouble(getY());
-        pack.writeDouble(getZ());
-        pack.writeInt(getId());
-        pack.writeUUID(getUUID());
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
     @Override
+    public Entity getOwner() {
+        return this.owner;
+    }
+
+    @Override
+    public Optional<UUID> getOwnerUUID() {
+        return Optional.ofNullable(this.uuid);
+    }
+
+    @Override
     public void tick() {
-        if (! level.isClientSide && this.tickCount >= 40) {
+        if(!level.isClientSide && this.tickCount >= 120) {
             this.remove();
         }
-
         if(! level.isClientSide) {
             Vector3d start = this.position();
             Vector3d end = start.add(this.getDeltaMovement());
@@ -74,6 +95,7 @@ public class FishCrossSlashEntity extends Entity {
                 this.onImpact(result);
             }
         }
+
         Vector3d vec3d = this.getDeltaMovement();
         double d0 = this.getX() + vec3d.x;
         double d1 = this.getY() + vec3d.y;
@@ -97,7 +119,7 @@ public class FishCrossSlashEntity extends Entity {
             Entity target = ((EntityRayTraceResult) result).getEntity();
             if (! (target instanceof PlayerEntity)) {
                 target.invulnerableTime = 0;
-                target.hurt(DamageSource.MAGIC, 10.0F);
+                target.hurt(DamageSource.MAGIC, 1.8F);
             }
         }
         this.level.broadcastEntityEvent(this, (byte) 3);
@@ -107,6 +129,6 @@ public class FishCrossSlashEntity extends Entity {
     protected EntityRayTraceResult rayTraceEntities(Vector3d startVec, Vector3d endVec) {
         return EntityUtil.rayTraceEntities(level, this, startVec, endVec, entity ->
                 entity.isPickable()
-                );
+        );
     }
 }

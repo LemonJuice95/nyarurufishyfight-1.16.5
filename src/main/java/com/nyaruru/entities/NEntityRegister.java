@@ -1,6 +1,7 @@
 package com.nyaruru.entities;
 
 import com.nyaruru.Reference;
+import com.nyaruru.entities.misc.BubbleEntity;
 import com.nyaruru.entities.misc.FishCrossSlashEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -16,5 +17,10 @@ public class NEntityRegister {
         return EntityType.Builder.of((EntityType<FishCrossSlashEntity> entityType, World worldIn) -> {
             return new FishCrossSlashEntity(entityType, worldIn);
         }, EntityClassification.MISC).sized(1.1F, 1.3F).build("fish_cross_slash");
+    });
+    public static final RegistryObject<EntityType<BubbleEntity>> BUBBLE = ENTITIES.register("bubble", () -> {
+        return EntityType.Builder.of((EntityType<BubbleEntity> entityType, World worldIn) -> {
+            return new BubbleEntity(entityType, worldIn);
+        }, EntityClassification.MISC).sized(0.25F, 0.25F).build("bubble");
     });
 }

@@ -13,4 +13,8 @@ public class EntityUtil {
         return ProjectileHelper.getEntityHitResult(world, entity, startVec, endVec,
                 entity.getBoundingBox().expandTowards(entity.getDeltaMovement()).inflate(1.0D), predicate);
     }
+
+    public static boolean isEntityValid(Entity target) {
+        return target != null && target.isAlive();
+    }
 }

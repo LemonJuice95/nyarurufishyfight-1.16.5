@@ -159,7 +159,8 @@ public class NPlayerEvents {
             if(ev.getEntityLiving() instanceof PlayerEntity) {
                 if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_DAGGER) == 1) {
                     if(attacker instanceof IHasOwner && !(attacker instanceof INyaruruNPC)) {
-                        ((IHasOwner) attacker).getOwner().hurt(DamageSource.thorns(ev.getEntityLiving()), ev.getAmount());
+                        if(((IHasOwner) attacker).getOwner() != null)
+                            ((IHasOwner) attacker).getOwner().hurt(DamageSource.thorns(ev.getEntityLiving()), ev.getAmount());
                     } else {
                         if(ev.getSource().getEntity() != null)
                             ev.getSource().getEntity().hurt(DamageSource.thorns(ev.getEntityLiving()), ev.getAmount());
