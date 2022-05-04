@@ -62,7 +62,7 @@ public class NDarkForestLootChestStructure extends Structure<NoFeatureConfig> {
 
         public void generatePieces(DynamicRegistries p_230364_1_, ChunkGenerator p_230364_2_, TemplateManager p_230364_3_, int p_230364_4_, int p_230364_5_, Biome p_230364_6_, NoFeatureConfig p_230364_7_) {
             int height = p_230364_2_.getFirstOccupiedHeight(getChunkX(), getChunkZ(), Heightmap.Type.WORLD_SURFACE_WG);
-            this.pieces.add(new NDarkForestLootChestPiece(this.random, getChunkX() * 16, height + 1, getChunkZ() * 16));
+            this.pieces.add(new NDarkForestLootChestPiece(this.random, getChunkX() * 16, height, getChunkZ() * 16));
             this.calculateBoundingBox();
         }
     }
