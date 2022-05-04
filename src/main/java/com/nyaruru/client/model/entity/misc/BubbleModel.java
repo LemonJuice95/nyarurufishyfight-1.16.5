@@ -20,7 +20,7 @@ public class BubbleModel extends EntityModel<BubbleEntity> {
 
 		bb_main = new ModelRenderer(this);
 		bb_main.setPos(0.0F, 24.0F, 0.0F);
-		bb_main.texOffs(0, 0).addBox(-2.0F, -10.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
+		bb_main.texOffs(0, 0).addBox(-2.0F, -26.0F, -2.0F, 4.0F, 4.0F, 4.0F, 0.0F, false);
 	}
 
 	@Override
