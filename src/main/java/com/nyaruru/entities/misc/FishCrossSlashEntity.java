@@ -57,7 +57,7 @@ public class FishCrossSlashEntity extends Entity {
 
     @Override
     public void tick() {
-        if (! level.isClientSide && this.tickCount >= 40) {
+        if (! level.isClientSide && this.tickCount >= 60) {
             this.remove();
         }
 
