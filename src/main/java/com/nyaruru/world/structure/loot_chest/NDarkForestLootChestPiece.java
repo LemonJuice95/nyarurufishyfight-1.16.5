@@ -56,7 +56,7 @@ public class NDarkForestLootChestPiece extends ScatteredStructurePiece {
     @Override
     public boolean postProcess(ISeedReader p_230383_1_, StructureManager p_230383_2_, ChunkGenerator p_230383_3_, Random p_230383_4_, MutableBoundingBox p_230383_5_, ChunkPos p_230383_6_, BlockPos p_230383_7_) {
         int height = p_230383_3_.getFirstOccupiedHeight(p_230383_6_.x, p_230383_6_.z, Heightmap.Type.WORLD_SURFACE_WG);
-        this.createChest(p_230383_1_, p_230383_5_, p_230383_4_, new BlockPos(p_230383_7_.getX(), height + 2, p_230383_7_.getZ()), NLoots.DARK_FOREST_LOOT_CHEST, null);
+        this.createChest(p_230383_1_, p_230383_5_, p_230383_4_, new BlockPos(p_230383_7_.getX(), height + 1, p_230383_7_.getZ()), NLoots.DARK_FOREST_LOOT_CHEST, null);
         return true;
     }
 }
