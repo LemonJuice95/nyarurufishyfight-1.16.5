@@ -3,6 +3,7 @@ package com.nyaruru.client;
 import com.nyaruru.Reference;
 import com.nyaruru.blocks.NBlockRegister;
 import com.nyaruru.client.events.NInputEvents;
+import com.nyaruru.client.render.entity.misc.BubbleRender;
 import com.nyaruru.client.render.entity.misc.FishCrossSlashRender;
 import com.nyaruru.entities.NEntityRegister;
 import com.nyaruru.entities.misc.FishCrossSlashEntity;
@@ -31,6 +32,10 @@ public class ClientRegister {
         RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.FISH_CROSS_SLASH.get(),
                 (EntityRendererManager manager) -> {
                     return new FishCrossSlashRender(manager);
+                });
+        RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.BUBBLE.get(),
+                (EntityRendererManager manager) -> {
+                    return new BubbleRender(manager);
                 });
     }
 
