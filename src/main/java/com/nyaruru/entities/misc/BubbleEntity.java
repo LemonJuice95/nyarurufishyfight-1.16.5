@@ -1,6 +1,7 @@
 package com.nyaruru.entities.misc;
 
 import com.nyaruru.entities.api.IHasOwner;
+import com.nyaruru.entities.api.INyaruruEnemy;
 import com.nyaruru.utils.EntityUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -117,7 +118,7 @@ public class BubbleEntity extends Entity implements IHasOwner {
     protected void onImpact(RayTraceResult result) {
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity target = ((EntityRayTraceResult) result).getEntity();
-            if (! (target instanceof PlayerEntity)) {
+            if (! (target instanceof INyaruruEnemy)) {
                 target.invulnerableTime = 0;
                 target.hurt(DamageSource.MAGIC, 1.8F);
             }
