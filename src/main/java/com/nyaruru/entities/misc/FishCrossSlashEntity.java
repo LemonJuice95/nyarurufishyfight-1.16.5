@@ -19,7 +19,6 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
-
 public class FishCrossSlashEntity extends Entity {
 
     public FishCrossSlashEntity(EntityType<? extends FishCrossSlashEntity> type, World worldIn) {
