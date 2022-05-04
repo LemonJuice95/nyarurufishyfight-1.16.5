@@ -42,7 +42,7 @@ public class NStructureFeatures {
 
     public static void setupStructures() {
         {
-            addStructure(DARK_FOREST_LOOT_CHEST.get(), new StructureSeparationSettings(25, 10, 1200013));
+            addStructure(DARK_FOREST_LOOT_CHEST.get(), new StructureSeparationSettings(6, 3, 1200013));
             CONFIGURED_DARK_FOREST_LOOT_CHEST = DARK_FOREST_LOOT_CHEST.get().configured(IFeatureConfig.NONE);
             Registry.register(WorldGenRegistries.CONFIGURED_STRUCTURE_FEATURE, StringUtil.resPrefix("configured_dark_forest_loot_chest"), CONFIGURED_DARK_FOREST_LOOT_CHEST);
             FlatGenerationSettings.STRUCTURE_FEATURES.put(DARK_FOREST_LOOT_CHEST.get(), CONFIGURED_DARK_FOREST_LOOT_CHEST);
