@@ -13,7 +13,7 @@ public class NChestLootTables implements Consumer<BiConsumer<ResourceLocation, L
     @Override
     public void accept(BiConsumer<ResourceLocation, LootTable.Builder> t) {
         t.accept(NLoots.DARK_FOREST_LOOT_CHEST, LootTable.lootTable()
-                .withPool(LootPool.lootPool().setRolls(RandomValueRange.between(2.0F, 4.0F))
+                .withPool(LootPool.lootPool().setRolls(RandomValueRange.between(4.0F, 8.0F))
                         .add(ItemLootEntry.lootTableItem(NItemRegister.CABBAGE.get()).setWeight(6))
                         .add(ItemLootEntry.lootTableItem(NItemRegister.CANNED_CAT_FOOD.get()).setWeight(6))
                         .add(ItemLootEntry.lootTableItem(NItemRegister.COPPER_COIN.get()).setWeight(10)).apply(SetCount.setCount(RandomValueRange.between(1.0F, 2.0F)))
@@ -22,6 +22,6 @@ public class NChestLootTables implements Consumer<BiConsumer<ResourceLocation, L
                         .add(ItemLootEntry.lootTableItem(NItemRegister.CAT_DIAMOND.get()).setWeight(2))
                         .add(ItemLootEntry.lootTableItem(NItemRegister.THORN_DAGGER.get()).setWeight(2))
                         .add(ItemLootEntry.lootTableItem(NItemRegister.EMERGENCY_POTION.get()).setWeight(2))
-                        .add(EmptyLootEntry.emptyItem().setWeight(18))));
+                        .add(EmptyLootEntry.emptyItem().setWeight(6))));
     }
 }
