@@ -20,6 +20,8 @@ public enum Resources {
     GAZE_OVERLAY_SCALE(0, 10),
     GAZE_TICK(0, 10),
     DOUBLE_SLASH_TICK(0, 10),
+    SHIELD_TICK(0, 1200),
+    HAS_SHIELD(0, 1),
 
     FIRST_GET_INTO_THE_WORLD(0,1),
 

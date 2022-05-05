@@ -106,6 +106,9 @@ public class NPlayerEvents {
                 } if(l.getResource(Resources.FLYING_FLAG) == 1) {
                     ev.player.addEffect(new EffectInstance(Effects.SLOW_FALLING, 3, 1));
                 }
+                if(l.getResource(Resources.HAS_SHIELD) == 1 && l.getResource(Resources.SHIELD_TICK) >= 1200) {
+                    ev.player.addEffect(new EffectInstance(Effects.GLOWING, 2, 0));
+                }
             });
         }
         NyaruruFishyFight.PROXY.climbUp();
@@ -172,6 +175,10 @@ public class NPlayerEvents {
                         ev.getEntityLiving().setHealth(1);
                         ev.getEntityLiving().addEffect(new EffectInstance(Effects.DAMAGE_RESISTANCE, 50, 4));
                     }
+                }
+                if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_SHIELD) == 1 && PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.SHIELD_TICK) >= 1200) {
+                    ev.setCanceled(true);
+                    PlayerUtil.setResource((PlayerEntity) ev.getEntityLiving(), Resources.SHIELD_TICK, 0);
                 }
             }
         }

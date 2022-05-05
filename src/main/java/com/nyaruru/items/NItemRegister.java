@@ -26,6 +26,7 @@ public class NItemRegister {
     //Accessories
     public static final RegistryObject<Item> THORN_DAGGER = ITEMS.register("thorn_dagger", ItemThornDagger::new);
     public static final RegistryObject<Item> EMERGENCY_POTION = ITEMS.register("emergency_potion", ItemEmergencyPotion::new);
+    public static final RegistryObject<Item> FORCE_FIELD_SHIELD = ITEMS.register("force_field_shield", ItemForceFieldShield::new);
 
     //Blocks
     public static final RegistryObject<Item> THORNS = ITEMS.register("thorns", () -> new BlockItem(NBlockRegister.THORNS.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
