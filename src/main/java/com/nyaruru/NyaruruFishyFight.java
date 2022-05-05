@@ -2,6 +2,7 @@ package com.nyaruru;
 
 import com.nyaruru.blocks.NBlockRegister;
 import com.nyaruru.capability.CapabilityHandler;
+import com.nyaruru.client.events.InputEventHandler;
 import com.nyaruru.entities.NEntityRegister;
 import com.nyaruru.items.NItemRegister;
 import com.nyaruru.network.NPacketHandler;
