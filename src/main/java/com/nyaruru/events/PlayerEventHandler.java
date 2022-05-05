@@ -34,6 +34,7 @@ public class PlayerEventHandler {
             if(l.getResource(Resources.FIRST_GET_INTO_THE_WORLD) == 0) {
                 l.setResource(Resources.POWER, 50);
                 l.setResource(Resources.SP, 100);
+                l.setResource(Resources.GAZE_OVERLAY_SCALE, 10);
             }
 
             l.setResource(Resources.FIRST_GET_INTO_THE_WORLD, 1);
