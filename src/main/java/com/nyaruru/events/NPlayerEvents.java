@@ -177,8 +177,10 @@ public class NPlayerEvents {
                     }
                 }
                 if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_SHIELD) == 1 && PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.SHIELD_TICK) >= 1200) {
-                    ev.setAmount(0);
-                    PlayerUtil.setResource((PlayerEntity) ev.getEntityLiving(), Resources.SHIELD_TICK, 0);
+                    if(!ev.getSource().isBypassArmor()) {
+                        ev.setAmount(0);
+                        PlayerUtil.setResource((PlayerEntity) ev.getEntityLiving(), Resources.SHIELD_TICK, 0);
+                    }
                 }
             }
         }
