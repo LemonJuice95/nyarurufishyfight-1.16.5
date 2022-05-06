@@ -23,7 +23,7 @@
           "weight": 6
         },
         {
-          "name": "nyaruru:copper_coin",
+          "name": "nyaruru:copper_cat_coin",
           "type": "minecraft:item",
           "weight": 10,
           "functions": [
@@ -38,12 +38,12 @@
           ]
         },
         {
-          "name": "nyaruru:silver_coin",
+          "name": "nyaruru:silver_cat_coin",
           "type": "minecraft:item",
           "weight": 8
         },
         {
-          "name": "nyaruru:gold_coin",
+          "name": "nyaruru:gold_cat_coin",
           "type": "minecraft:item",
           "weight": 4
         },

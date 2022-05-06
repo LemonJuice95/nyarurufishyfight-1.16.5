@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "nyaruru:force_field_shield"
+    "layer0": "nyaruru:item/force_field_shield"
   }
 }
