@@ -1,5 +1,6 @@
 package com.nyaruru.items.fishes;
 
+import com.nyaruru.client.render.itemstack.FishISTER;
 import com.nyaruru.entities.NEntityRegister;
 import com.nyaruru.entities.misc.FishCrossSlashEntity;
 import com.nyaruru.groups.NGroupRegister;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class ItemDeepSeaTuna extends SwordItem {
     public ItemDeepSeaTuna() {
-        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS));
+        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS).setISTER(() -> FishISTER::new));
     }
 
     @Override

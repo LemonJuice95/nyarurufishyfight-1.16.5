@@ -1,5 +1,6 @@
 package com.nyaruru.items.fishes;
 
+import com.nyaruru.client.render.itemstack.FishISTER;
 import com.nyaruru.groups.NGroupRegister;
 import com.nyaruru.items.NItemTiers;
 import com.nyaruru.utils.PlayerUtil;
@@ -28,7 +29,7 @@ import java.util.Random;
 
 public class ItemHyneriaLindae extends SwordItem {
     public ItemHyneriaLindae(){
-        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS));
+        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS).setISTER(() -> FishISTER::new));
     }
 
     @Override

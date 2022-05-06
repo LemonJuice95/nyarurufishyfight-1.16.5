@@ -7,11 +7,14 @@ package com.nyaruru.client.model.itemstack;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
+import com.nyaruru.utils.StringUtil;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 
 public class FishModel extends EntityModel<Entity> {
+	public static final ResourceLocation TEXTURE = StringUtil.resPrefix("textures/item/fish.png");
 	private final ModelRenderer bone;
 
 	public FishModel() {
@@ -45,6 +48,9 @@ public class FishModel extends EntityModel<Entity> {
 
 	@Override
 	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
+		matrixStack.pushPose();
+		matrixStack.scale(0.8F, 0.5F, 1.5F);
+		matrixStack.popPose();
 		bone.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
