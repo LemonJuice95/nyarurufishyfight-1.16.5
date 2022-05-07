@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 public class FishISTER extends ItemStackTileEntityRenderer {
     private final FishModel model = new FishModel();
 
+    @Override
     public void renderByItem(ItemStack p_239207_1_, ItemCameraTransforms.TransformType p_239207_2_, MatrixStack p_239207_3_, IRenderTypeBuffer p_239207_4_, int p_239207_5_, int p_239207_6_) {
         p_239207_3_.pushPose();
         IVertexBuilder vertexBuilder = ItemRenderer.getFoilBufferDirect(p_239207_4_, this.model.renderType(FishModel.TEXTURE), false, p_239207_1_.hasFoil());

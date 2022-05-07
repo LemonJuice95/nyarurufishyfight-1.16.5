@@ -26,7 +26,8 @@ import java.util.List;
 
 public class ItemEusthenopteron extends SwordItem {
     public ItemEusthenopteron(){
-        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS).setISTER(() -> FishISTER::new));
+        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS));
+//                .setISTER(() -> FishISTER::new));
     }
 
     @Override

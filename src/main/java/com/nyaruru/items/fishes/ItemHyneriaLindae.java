@@ -29,7 +29,8 @@ import java.util.Random;
 
 public class ItemHyneriaLindae extends SwordItem {
     public ItemHyneriaLindae(){
-        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS).setISTER(() -> FishISTER::new));
+        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS));
+//                .setISTER(() -> FishISTER::new));
     }
 
     @Override

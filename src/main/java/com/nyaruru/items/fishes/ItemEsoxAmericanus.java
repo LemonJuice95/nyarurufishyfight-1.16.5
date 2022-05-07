@@ -25,7 +25,8 @@ import java.util.List;
 
 public class ItemEsoxAmericanus extends SwordItem {
     public ItemEsoxAmericanus() {
-        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS).setISTER(() -> FishISTER::new));
+        super(NItemTiers.FISH, 9, 0.0F, new Item.Properties().tab(NGroupRegister.WEAPONS));
+//                .setISTER(() -> FishISTER::new));
     }
 
 
