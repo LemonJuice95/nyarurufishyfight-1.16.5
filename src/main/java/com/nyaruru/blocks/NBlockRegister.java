@@ -4,6 +4,7 @@ import com.nyaruru.Reference;
 import com.nyaruru.blocks.misc.CoinPileBlock;
 import com.nyaruru.blocks.misc.CrystalClusterBlock;
 import com.nyaruru.blocks.misc.SpikesBlock;
+import com.nyaruru.blocks.misc.SteamBoosterBlock;
 import com.nyaruru.blocks.plants.BouncyMushroomBlock;
 import com.nyaruru.blocks.plants.ThornsBlock;
 import net.minecraft.block.Block;
@@ -22,6 +23,7 @@ public class NBlockRegister {
     public static final RegistryObject<Block> BOUNCY_MUSHROOM = BLOCKS.register("bouncy_mushroom", BouncyMushroomBlock::new);
     public static final RegistryObject<Block> COIN_PILE = BLOCKS.register("coin_pile", CoinPileBlock::new);
     public static final RegistryObject<Block> CRYSTAL_CLUSTER = BLOCKS.register("crystal_cluster", CrystalClusterBlock::new);
+    public static final RegistryObject<Block> STEAM_BOOSTER = BLOCKS.register("steam_booster", SteamBoosterBlock::new);
 
     public static boolean never(BlockState p_235436_0_, IBlockReader p_235436_1_, BlockPos p_235436_2_) {
         return false;

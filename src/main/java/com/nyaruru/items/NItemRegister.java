@@ -33,8 +33,9 @@ public class NItemRegister {
     public static final RegistryObject<Item> THORNS = ITEMS.register("thorns", () -> new BlockItem(NBlockRegister.THORNS.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
     public static final RegistryObject<Item> SPIKES = ITEMS.register("spikes", () -> new BlockItem(NBlockRegister.SPIKES.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
     public static final RegistryObject<Item> BOUNCY_MUSHROOM = ITEMS.register("bouncy_mushroom", () -> new BlockItem(NBlockRegister.BOUNCY_MUSHROOM.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
-    public static final RegistryObject<Item> CRYSTAL_CLUSTER = ITEMS.register("crystal_cluster", () -> new BlockItem(NBlockRegister.CRYSTAL_CLUSTER.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
     public static final RegistryObject<Item> COIN_PILE = ITEMS.register("coin_pile", () -> new BlockItem(NBlockRegister.COIN_PILE.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
+    public static final RegistryObject<Item> CRYSTAL_CLUSTER = ITEMS.register("crystal_cluster", () -> new BlockItem(NBlockRegister.CRYSTAL_CLUSTER.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
+    public static final RegistryObject<Item> STEAM_BOOSTER = ITEMS.register("steam_booster", () -> new BlockItem(NBlockRegister.STEAM_BOOSTER.get(), new Item.Properties().tab(NGroupRegister.BLOCKS)));
 
     //Gemstones
     public static final RegistryObject<Item> RED_JADE_FISH_EYE = ITEMS.register("red_jade_fish_eye", ItemRedJadeFishEye::new);

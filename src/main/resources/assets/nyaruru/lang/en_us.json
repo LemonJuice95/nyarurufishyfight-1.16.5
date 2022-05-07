@@ -38,10 +38,13 @@
   "block.nyaruru.thorns": "Thorns",
   "block.nyaruru.spikes": "Spikes",
   "block.nyaruru.bouncy_mushroom": "Bouncy Mushroom",
+  "block.nyaruru.coin_pile": "Coin Pile",
   "block.nyaruru.crystal_cluster": "Crystal Cluster",
+  "block.nyaruru.steam_booster": "Steam Booster",
 
   "//": "Entities",
   "entity.nyaruru.fish_cross_slash": "Fish Cross Slash",
+  "entity.nyaruru.bubble": "Bubble",
 
   "//": "Biomes",
   "biome.nyaruru.dark_forest": "Dark Forest",

@@ -29,6 +29,7 @@ public class NBlockLootTables extends BlockLootTables {
     protected void addTables() {
         this.dropSelf(NBlockRegister.SPIKES.get());
         this.dropSelf(NBlockRegister.BOUNCY_MUSHROOM.get());
+        this.dropSelf(NBlockRegister.STEAM_BOOSTER.get());
 
         this.add(NBlockRegister.THORNS.get(), NBlockLootTables::createThornsDrop);
         this.add(NBlockRegister.CRYSTAL_CLUSTER.get(), NBlockLootTables::createCrystalClusterDrop);

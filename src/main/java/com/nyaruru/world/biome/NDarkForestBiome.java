@@ -36,6 +36,7 @@ public class NDarkForestBiome {
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.THORNS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.SPIKES.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(30, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.BOUNCY_MUSHROOMS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(20, 0.1F, 1))));
+        generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.COIN_PILE.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(5, 0.1F, 1))));
 
         BiomeGenerationSettings generationSettings = generations.build();
         BiomeGenerationSettingsBuilder wrapper = new BiomeGenerationSettingsBuilder(generationSettings);
