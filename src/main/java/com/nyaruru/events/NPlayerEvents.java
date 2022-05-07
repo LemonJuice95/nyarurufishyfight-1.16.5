@@ -4,6 +4,7 @@ import com.nyaruru.NyaruruFishyFight;
 import com.nyaruru.Reference;
 import com.nyaruru.capability.CapabilityHandler;
 import com.nyaruru.entities.api.IHasOwner;
+import com.nyaruru.entities.api.INyaruruEntity;
 import com.nyaruru.entities.api.INyaruruNPC;
 import com.nyaruru.items.fishes.ItemEsoxAmericanus;
 import com.nyaruru.network.NPacketHandler;
@@ -16,11 +17,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.event.TickEvent;
@@ -32,6 +36,9 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.system.libc.LibCStdio;
+
+import java.util.List;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class NPlayerEvents {
@@ -185,4 +192,51 @@ public class NPlayerEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void onPlayerFall(LivingFallEvent ev) {
+        if(!ev.getEntityLiving().level.isClientSide) {
+            if(ev.getEntityLiving() instanceof PlayerEntity) {
+                if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_BOWKNOT) == 1) {
+                    float f2 = 4.0F;
+                    int k1 = MathHelper.floor(ev.getEntityLiving().getX() - (double)f2 - 1.0D);
+                    int l1 = MathHelper.floor(ev.getEntityLiving().getX() + (double)f2 + 1.0D);
+                    int i2 = MathHelper.floor(ev.getEntityLiving().getY() - (double)f2 - 1.0D);
+                    int i1 = MathHelper.floor(ev.getEntityLiving().getY() + (double)f2 + 1.0D);
+                    int j2 = MathHelper.floor(ev.getEntityLiving().getZ() - (double)f2 - 1.0D);
+                    int j1 = MathHelper.floor(ev.getEntityLiving().getZ() + (double)f2 + 1.0D);
+                    List<Entity> list = ev.getEntityLiving().level.getEntities(ev.getEntityLiving(), new AxisAlignedBB((double)k1, (double)i2, (double)j2, (double)l1, (double)i1, (double)j1));
+                    for (Entity entity : list) {
+                        if (entity != ev.getEntityLiving() && (entity instanceof LivingEntity)) {
+                            if (entity instanceof INyaruruEntity) {
+                                entity.hurt(DamageSource.mobAttack(ev.getEntityLiving()), 5);
+                            } else {
+                                entity.hurt(DamageSource.mobAttack(ev.getEntityLiving()), 1);
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if(ev.getEntityLiving() instanceof PlayerEntity) {
+                if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_BOWKNOT) == 1) {
+                    Random random = new Random();
+                    for(int i = 0; i < 10; i++)
+                        ev.getEntityLiving().level.addParticle(ParticleTypes.CLOUD, ev.getEntityLiving().getX() + random.nextDouble(), ev.getEntityLiving().getY() - 0.3, ev.getEntityLiving().getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                    float f2 = 4.0F;
+                    int k1 = MathHelper.floor(ev.getEntityLiving().getX() - (double)f2 - 1.0D);
+                    int l1 = MathHelper.floor(ev.getEntityLiving().getX() + (double)f2 + 1.0D);
+                    int i2 = MathHelper.floor(ev.getEntityLiving().getY() - (double)f2 - 1.0D);
+                    int i1 = MathHelper.floor(ev.getEntityLiving().getY() + (double)f2 + 1.0D);
+                    int j2 = MathHelper.floor(ev.getEntityLiving().getZ() - (double)f2 - 1.0D);
+                    int j1 = MathHelper.floor(ev.getEntityLiving().getZ() + (double)f2 + 1.0D);
+                    List<Entity> list = ev.getEntityLiving().level.getEntities(ev.getEntityLiving(), new AxisAlignedBB((double)k1, (double)i2, (double)j2, (double)l1, (double)i1, (double)j1));
+                    for (Entity entity : list) {
+                        if (entity != ev.getEntityLiving()) {
+                            entity.push(0.0D, 0.4D, 0.0D);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
