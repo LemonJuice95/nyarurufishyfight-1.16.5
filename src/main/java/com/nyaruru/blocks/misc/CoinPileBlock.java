@@ -47,8 +47,8 @@ public class CoinPileBlock extends Block {
     public void playerDestroy(World p_180657_1_, PlayerEntity p_180657_2_, BlockPos p_180657_3_, BlockState p_180657_4_, @Nullable TileEntity p_180657_5_, ItemStack p_180657_6_) {
         if(!p_180657_1_.isClientSide) {
             BlockState state = p_180657_4_;
-            if(state.getValue(STATE) >= 1) {
-                state.setValue(STATE, state.getValue(STATE) - 1);
+            if(state.getValue(STATE) < 4) {
+                state.setValue(STATE, state.getValue(STATE) + 1);
                 p_180657_1_.setBlock(p_180657_3_, p_180657_4_, 1);
             }
         }

@@ -24,8 +24,8 @@ public class SteamBoosterBlock extends Block {
     public static final VoxelShape SHAPE1 = Block.box(2.0F, 0.0F, 2.0F, 14.0F, 1.0F, 14.0F);
     public static final VoxelShape SHAPE2 = Block.box(3.0F, 1.0F, 3.0F, 13.0F, 3.0F, 13.0F);
     public static final VoxelShape SHAPE = VoxelShapes.or(SHAPE1, SHAPE2);
-    private static int onTick = 0;
-    private static boolean particleFlag;
+    private int onTick = 0;
+    private boolean particleFlag = false;
 
     public SteamBoosterBlock() {
         super(AbstractBlock.Properties.of(Material.DECORATION).strength(0.3F).sound(SoundType.STONE).isSuffocating(NBlockRegister::never).isViewBlocking(NBlockRegister::never));
@@ -40,19 +40,16 @@ public class SteamBoosterBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void tick(BlockState p_225534_1_, ServerWorld p_225534_2_, BlockPos p_225534_3_, Random p_225534_4_) {
-        switch (onTick) {
-            case 1:
-                particleFlag = true;
-                break;
-            case 15:
-                particleFlag = false;
-                break;
-            case 80:
-                onTick = 0;
-                break;
-            default:
-                onTick++;
-                break;
+        if(onTick == 1) {
+            particleFlag = true;
+        }
+        if(onTick == 15) {
+            particleFlag = false;
+        }
+        if(onTick >= 80) {
+            onTick = 0;
+        } else {
+            onTick++;
         }
     }
 
