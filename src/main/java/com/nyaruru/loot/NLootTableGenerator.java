@@ -15,7 +15,8 @@ import java.util.function.Supplier;
 
 public class NLootTableGenerator extends LootTableProvider {
     private final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> tables = ImmutableList.of(
-            Pair.of(NChestLootTables::new, LootParameterSets.CHEST));
+            Pair.of(NChestLootTables::new, LootParameterSets.CHEST),
+            Pair.of(NBlockLootTables::new, LootParameterSets.BLOCK));
 
     public NLootTableGenerator(DataGenerator dataGeneratorIn) {
         super(dataGeneratorIn);

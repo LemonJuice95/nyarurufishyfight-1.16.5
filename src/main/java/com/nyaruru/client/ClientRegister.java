@@ -47,5 +47,6 @@ public class ClientRegister {
 
     public static void RegisterRenderTypes() {
         RenderTypeLookup.setRenderLayer(NBlockRegister.THORNS.get(), RenderType.cutout());
+        RenderTypeLookup.setRenderLayer(NBlockRegister.CRYSTAL_CLUSTER.get(), RenderType.cutout());
     }
 }
