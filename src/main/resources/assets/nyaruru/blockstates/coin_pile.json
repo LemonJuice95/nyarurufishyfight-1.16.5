@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "state=0": {"model": "nyaruru:block/coin_pile_0"},
+    "state=1": {"model": "nyaruru:block/coin_pile_1"},
+    "state=2": {"model": "nyaruru:block/coin_pile_2"},
+    "state=3": {"model": "nyaruru:block/coin_pile_3"},
+    "state=4": {"model": "nyaruru:block/coin_pile_4"}
+  }
+}
