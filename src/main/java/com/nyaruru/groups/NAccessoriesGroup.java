@@ -1,5 +1,6 @@
 package com.nyaruru.groups;
 
+import com.nyaruru.items.NItemRegister;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -11,6 +12,6 @@ public class NAccessoriesGroup extends ItemGroup {
 
     @Override
     public ItemStack makeIcon(){
-        return new ItemStack(Items.AIR);
+        return new ItemStack(NItemRegister.RED_JADE_FISH_EYE.get());
     }
 }
