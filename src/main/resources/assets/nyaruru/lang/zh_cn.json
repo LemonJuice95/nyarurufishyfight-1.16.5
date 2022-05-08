@@ -48,6 +48,7 @@
 
   "//": "Biomes",
   "biome.nyaruru.dark_forest": "幽暗之森",
+  "biome.nyaruru.crystal_cave": "弧晶矿洞",
 
   "//": "ToolTips",
   "tooltip.nyaruru.food.cabbage": "食用后回复30%HP",

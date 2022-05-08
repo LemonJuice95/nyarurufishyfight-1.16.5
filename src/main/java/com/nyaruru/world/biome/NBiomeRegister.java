@@ -21,9 +21,11 @@ public class NBiomeRegister {
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, Reference.MODID);
 
     public static final RegistryObject<Biome> DARK_FOREST = BIOMES.register("dark_forest", () -> NDarkForestBiome.getDarkForestBiome());
+    public static final RegistryObject<Biome> CRYSTAL_CAVE = BIOMES.register("crystal_cave", () -> NCrystalCaveBiome.getCrystalCaveBiome());
 
     public static void registerBiomes(final FMLCommonSetupEvent ev) {
         registerBiome(DARK_FOREST.get(), BiomeManager.BiomeType.COOL, 30, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.OVERWORLD);
+        registerBiome(CRYSTAL_CAVE.get(), BiomeManager.BiomeType.COOL, 30, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.OVERWORLD);
     }
 
     public static void biomeModification(final BiomeLoadingEvent event) {

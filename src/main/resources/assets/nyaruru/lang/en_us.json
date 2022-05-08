@@ -48,6 +48,7 @@
 
   "//": "Biomes",
   "biome.nyaruru.dark_forest": "Dark Forest",
+  "biome.nyaruru.crystal_cave": "Crystal Cave",
 
   "//": "ToolTips",
   "tooltip.nyaruru.food.cabbage": "Restores 30% HP after eating",
