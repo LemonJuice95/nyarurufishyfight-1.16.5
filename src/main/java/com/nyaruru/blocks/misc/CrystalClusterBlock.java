@@ -32,7 +32,7 @@ public class CrystalClusterBlock extends Block {
     public static final VoxelShape SHAPE = Block.box(4.0F, 0.0F, 4.0F, 12.0F, 15.0F, 12.0F);
 
     public CrystalClusterBlock() {
-        super(AbstractBlock.Properties.of(Material.DECORATION).strength(0.2F).sound(SoundType.STONE).isSuffocating(NBlockRegister::never).isViewBlocking(NBlockRegister::never)
+        super(AbstractBlock.Properties.of(Material.DECORATION).strength(0.2F).sound(SoundType.STONE).isSuffocating(NBlockRegister::never).noCollission().isViewBlocking(NBlockRegister::never)
                 .lightLevel((state) -> {
                     return 7;
                 }));
