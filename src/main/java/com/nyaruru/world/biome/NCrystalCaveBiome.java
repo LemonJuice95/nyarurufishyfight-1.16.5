@@ -30,6 +30,7 @@ public class NCrystalCaveBiome {
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NCrystalCaveFeatures.TORCHES.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NCrystalCaveFeatures.SKULLS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
         generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NCrystalCaveFeatures.BOOSTERS.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(2, 0.1F, 1))));
+        generations.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, NDarkForestFeatures.COIN_PILE.decorated(Placement.COUNT_EXTRA.configured(new AtSurfaceWithExtraConfig(1, 0.1F, 1))));
 
         BiomeGenerationSettings generationSettings = generations.build();
         BiomeGenerationSettingsBuilder wrapper = new BiomeGenerationSettingsBuilder(generationSettings);

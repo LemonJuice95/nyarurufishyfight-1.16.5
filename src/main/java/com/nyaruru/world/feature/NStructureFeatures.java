@@ -35,6 +35,7 @@ public class NStructureFeatures {
     public static StructureFeature<?, ?> CONFIGURED_DARK_FOREST_LOOT_CHEST;
 
     public static IStructurePieceType DARK_FOREST_LOOT_CHEST_TYPE = setPieceId(NDarkForestLootChestPiece::new, "dark_forest_loot_chest");
+    public static IStructurePieceType CRYSTAL_CAVE_LOOT_CHEST_TYPE = setPieceId(NDarkForestLootChestPiece::new, "crystal_cave_loot_chest");
 
     static IStructurePieceType setPieceId(IStructurePieceType p_214750_0_, String p_214750_1_) {
         return Registry.register(Registry.STRUCTURE_PIECE, p_214750_1_.toLowerCase(Locale.ROOT), p_214750_0_);

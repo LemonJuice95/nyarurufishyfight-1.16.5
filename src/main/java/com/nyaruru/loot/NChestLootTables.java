@@ -23,5 +23,12 @@ public class NChestLootTables implements Consumer<BiConsumer<ResourceLocation, L
                         .add(ItemLootEntry.lootTableItem(NItemRegister.THORN_DAGGER.get()).setWeight(2))
                         .add(ItemLootEntry.lootTableItem(NItemRegister.EMERGENCY_POTION.get()).setWeight(2))
                         .add(EmptyLootEntry.emptyItem().setWeight(6))));
+
+        t.accept(NLoots.CRYSTAL_CAVE_LOOT_CHEST, LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(RandomValueRange.between(3.0F, 7.0F))
+                        .add(ItemLootEntry.lootTableItem(NItemRegister.CABBAGE.get()).setWeight(6))
+                        .add(ItemLootEntry.lootTableItem(NItemRegister.COPPER_CAT_COIN.get()).setWeight(10))
+                        .add(ItemLootEntry.lootTableItem(NItemRegister.SILVER_CAT_COIN.get()).setWeight(8))
+                        .add(EmptyLootEntry.emptyItem().setWeight(6))));
     }
 }

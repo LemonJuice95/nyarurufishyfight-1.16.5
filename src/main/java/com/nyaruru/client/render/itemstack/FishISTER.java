@@ -16,6 +16,7 @@ public class FishISTER extends ItemStackTileEntityRenderer {
     @Override
     public void renderByItem(ItemStack p_239207_1_, ItemCameraTransforms.TransformType p_239207_2_, MatrixStack p_239207_3_, IRenderTypeBuffer p_239207_4_, int p_239207_5_, int p_239207_6_) {
         p_239207_3_.pushPose();
+        p_239207_3_.scale(0.8F, 0.5F, 1.5F);
         IVertexBuilder vertexBuilder = ItemRenderer.getFoilBufferDirect(p_239207_4_, this.model.renderType(FishModel.TEXTURE), false, p_239207_1_.hasFoil());
         this.model.renderToBuffer(p_239207_3_, vertexBuilder, p_239207_5_, p_239207_6_, 1.0F, 1.0F, 1.0F, 1.0F);
         p_239207_3_.popPose();

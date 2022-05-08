@@ -48,9 +48,6 @@ public class FishModel extends EntityModel<Entity> {
 
 	@Override
 	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		matrixStack.pushPose();
-		matrixStack.scale(0.8F, 0.5F, 1.5F);
-		matrixStack.popPose();
 		bone.render(matrixStack, buffer, packedLight, packedOverlay);
 	}
 
