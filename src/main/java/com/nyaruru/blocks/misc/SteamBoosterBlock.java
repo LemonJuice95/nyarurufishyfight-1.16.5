@@ -38,13 +38,13 @@ public class SteamBoosterBlock extends Block {
         return SHAPE;
     }
 
-    @Override
+    /*@Override
     @OnlyIn(Dist.CLIENT)
     public void animateTick(BlockState p_180655_1_, World p_180655_2_, BlockPos p_180655_3_, Random p_180655_4_) {
         if(SteamBoosterTileEntity.particleFlag) {
-            p_180655_2_.addParticle(ParticleTypes.CLOUD, p_180655_3_.getX(), p_180655_3_.getY() + 0.2 * SteamBoosterTileEntity.onTick - 0.3, p_180655_3_.getZ(), 0.0, 0.0, 0.0);
+            p_180655_2_.addParticle(ParticleTypes.CLOUD, p_180655_3_.getX() + 0.5, p_180655_3_.getY() + 0.2 * SteamBoosterTileEntity.onTick + 1.0, p_180655_3_.getZ() + 0.5, 0.0, 0.0, 0.0);
         }
-    }
+    }*/
 
     @SuppressWarnings("deprecation")
     @Override

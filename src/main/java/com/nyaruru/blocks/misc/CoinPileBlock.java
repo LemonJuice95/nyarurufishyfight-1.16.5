@@ -48,8 +48,8 @@ public class CoinPileBlock extends Block {
         if(!p_180657_1_.isClientSide) {
             BlockState state = p_180657_4_;
             if(state.getValue(STATE) < 4) {
-                state.setValue(STATE, p_180657_4_.getValue(STATE) + 1);
-                p_180657_1_.setBlock(p_180657_3_, state, 1);
+                state = state.setValue(STATE, p_180657_4_.getValue(STATE) + 1);
+                p_180657_1_.setBlock(p_180657_3_, state, 3);
             }
         }
         super.playerDestroy(p_180657_1_, p_180657_2_, p_180657_3_, p_180657_4_, p_180657_5_, p_180657_6_);
