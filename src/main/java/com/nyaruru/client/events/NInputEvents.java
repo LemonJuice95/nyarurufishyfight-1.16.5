@@ -5,6 +5,7 @@ import com.nyaruru.network.NPacketHandler;
 import com.nyaruru.network.toserver.PlayerStatsPacketToServer;
 import com.nyaruru.utils.PlayerUtil;
 import com.nyaruru.utils.Resources;
+import com.sun.org.apache.xml.internal.security.utils.resolver.ResourceResolver;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;
@@ -109,6 +110,17 @@ public class NInputEvents {
             if (Minecraft.getInstance().player != null) {
                 final ClientPlayerEntity player = Minecraft.getInstance().player;
                 NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.FLYING_FLAG.ordinal(), 0));
+            }
+        }
+        if(FISH_SKILL_KEY.consumeClick()) {
+            assert Minecraft.getInstance().player != null;
+            final ClientPlayerEntity player = Minecraft.getInstance().player;
+            if(PlayerUtil.getResource(player, Resources.FLUORITE_FISH_EYE) == 1) {
+                int sprint_up_times = PlayerUtil.getResource(player, Resources.SPRINT_UP_TIMES);
+                if(sprint_up_times < 2) {
+                    player.push(0.0D, 1.6D, 0.0D);
+                    NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_TIMES.ordinal(), sprint_up_times + 1));
+                }
             }
         }
     }

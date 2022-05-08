@@ -7,6 +7,7 @@ import com.nyaruru.items.coins.*;
 import com.nyaruru.items.fishes.*;
 import com.nyaruru.items.accessories.*;
 import com.nyaruru.items.gemstones.ItemAquamarineFishEye;
+import com.nyaruru.items.gemstones.ItemFluoriteFishEye;
 import com.nyaruru.items.gemstones.ItemRedJadeFishEye;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -39,6 +40,7 @@ public class NItemRegister {
 
     //Gemstones
     public static final RegistryObject<Item> RED_JADE_FISH_EYE = ITEMS.register("red_jade_fish_eye", ItemRedJadeFishEye::new);
+    public static final RegistryObject<Item> FLUORITE_FISH_EYE = ITEMS.register("fluorite_fish_eye", ItemFluoriteFishEye::new);
     public static final RegistryObject<Item> AQUAMARINE_FISH_EYE = ITEMS.register("aquamarine_fish_eye", ItemAquamarineFishEye::new);
 
     //Misc

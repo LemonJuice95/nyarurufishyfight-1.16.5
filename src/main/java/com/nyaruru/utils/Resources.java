@@ -21,6 +21,7 @@ public enum Resources {
     GAZE_TICK(0, 10),
     DOUBLE_SLASH_TICK(0, 10),
     SHIELD_TICK(0, 1200),
+    SPRINT_UP_TIMES(0, 5),
 
     FIRST_GET_INTO_THE_WORLD(0,1),
 
@@ -28,6 +29,7 @@ public enum Resources {
     HAS_POTION(0, 1),
     RED_JADE_FISH_EYE(0, 1),
     AQUAMARINE_FISH_EYE(0,1),
+    FLUORITE_FISH_EYE(0, 1),
     HAS_SHIELD(0, 1),
     HAS_BOWKNOT(0, 1);
 

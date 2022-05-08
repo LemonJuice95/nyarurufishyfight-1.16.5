@@ -50,6 +50,9 @@ public class NPlayerEvents {
     public static void tickPlayer(TickEvent.PlayerTickEvent ev) {
         if(! ev.player.level.isClientSide) {
             PlayerUtil.getOptManager(ev.player).ifPresent(l -> {
+                if(ev.player.isOnGround() && l.getResource(Resources.SPRINT_UP_TIMES) > 0) {
+                    l.setResource(Resources.SPRINT_UP_TIMES, 0);
+                }
                 if(l.getResource(Resources.SP) < Resources.SP.max && !(l.getResource(Resources.SPRINT_TICKS) != 0 && ev.player.level.getBlockState(ev.player.blockPosition().below()).getBlock() == Blocks.AIR)) {
                     l.addResource(Resources.SP, 1);
                 }
@@ -221,7 +224,7 @@ public class NPlayerEvents {
                 if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_BOWKNOT) == 1) {
                     Random random = new Random();
                     for(int i = 0; i < 10; i++)
-                        ev.getEntityLiving().level.addParticle(ParticleTypes.CLOUD, ev.getEntityLiving().getX() + random.nextDouble(), ev.getEntityLiving().getY() - 0.3, ev.getEntityLiving().getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
+                        ev.getEntityLiving().level.addParticle(ParticleTypes.CLOUD, ev.getEntityLiving().getX() + random.nextDouble() + 0.5, ev.getEntityLiving().getY() + 0.2, ev.getEntityLiving().getZ() + random.nextDouble() + 0.5, 0.0, 0.0, 0.0);
                     float f2 = 4.0F;
                     int k1 = MathHelper.floor(ev.getEntityLiving().getX() - (double)f2 - 1.0D);
                     int l1 = MathHelper.floor(ev.getEntityLiving().getX() + (double)f2 + 1.0D);
