@@ -11,6 +11,7 @@ import com.nyaruru.items.gemstones.ItemFluoriteFishEye;
 import com.nyaruru.items.gemstones.ItemRedJadeFishEye;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.world.gen.feature.structure.TemplateStructurePiece;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
