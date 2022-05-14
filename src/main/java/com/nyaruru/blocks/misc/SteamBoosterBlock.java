@@ -9,6 +9,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.state.IntegerProperty;
+import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -27,9 +29,11 @@ public class SteamBoosterBlock extends Block {
     public static final VoxelShape SHAPE1 = Block.box(2.0F, 0.0F, 2.0F, 14.0F, 1.0F, 14.0F);
     public static final VoxelShape SHAPE2 = Block.box(3.0F, 1.0F, 3.0F, 13.0F, 3.0F, 13.0F);
     public static final VoxelShape SHAPE = VoxelShapes.or(SHAPE1, SHAPE2);
+    public static final IntegerProperty TICK = IntegerProperty.create("tick", 0, 80);
 
     public SteamBoosterBlock() {
         super(AbstractBlock.Properties.of(Material.DECORATION).strength(0.3F).sound(SoundType.STONE).isSuffocating(NBlockRegister::never).isViewBlocking(NBlockRegister::never));
+        this.registerDefaultState(this.stateDefinition.any().setValue(TICK, 0));
     }
 
     @SuppressWarnings("deprecation")
@@ -50,7 +54,7 @@ public class SteamBoosterBlock extends Block {
     @Override
     public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
         if(world.isClientSide) {
-            if(SteamBoosterTileEntity.onTick == 2) {
+            if(state.getValue(TICK) == 2) {
                 entity.push(0.0D, 1.6D, 0.0D);
             }
         }
@@ -65,5 +69,10 @@ public class SteamBoosterBlock extends Block {
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return new SteamBoosterTileEntity();
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> p_206840_1_) {
+        p_206840_1_.add(TICK);
     }
 }

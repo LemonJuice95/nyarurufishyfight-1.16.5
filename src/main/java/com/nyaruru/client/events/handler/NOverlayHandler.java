@@ -18,6 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jline.utils.Colors;
 
 @OnlyIn(Dist.CLIENT)
+@SuppressWarnings("deprecation")
 public class NOverlayHandler {
     private static final ResourceLocation RESOURCES = StringUtil.resPrefix("textures/gui/overlay/resources.png");
     private static final ResourceLocation GAZE = StringUtil.resPrefix("textures/misc/a_cats_gaze.png");

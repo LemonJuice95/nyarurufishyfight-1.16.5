@@ -5,7 +5,6 @@ import com.nyaruru.network.NPacketHandler;
 import com.nyaruru.network.toserver.PlayerStatsPacketToServer;
 import com.nyaruru.utils.PlayerUtil;
 import com.nyaruru.utils.Resources;
-import com.sun.org.apache.xml.internal.security.utils.resolver.ResourceResolver;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.Minecraft;

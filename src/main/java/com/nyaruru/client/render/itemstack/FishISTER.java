@@ -23,7 +23,7 @@ public class FishISTER extends ItemStackTileEntityRenderer {
         p_239207_3_.scale(1.5F, 0.8F, 0.5F);
         p_239207_3_.mulPose(Vector3f.XN.rotationDegrees(-90));
         p_239207_3_.mulPose(Vector3f.YN.rotationDegrees(-90));
-        p_239207_3_.translate(0.8, 0.15, 0.35);
+        p_239207_3_.translate(0.8, 0.15, 0.4);
         IVertexBuilder vertexBuilder = ItemRenderer.getFoilBufferDirect(p_239207_4_, this.model.renderType(FishModel.TEXTURE), false, p_239207_1_.hasFoil());
         this.model.renderToBuffer(p_239207_3_, vertexBuilder, p_239207_5_, p_239207_6_, 1.0F, 1.0F, 1.0F, 1.0F);
         p_239207_3_.popPose();
