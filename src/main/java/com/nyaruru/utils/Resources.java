@@ -22,6 +22,8 @@ public enum Resources {
     DOUBLE_SLASH_TICK(0, 10),
     SHIELD_TICK(0, 1200),
     SPRINT_UP_TIMES(0, 5),
+    SPRINT_UP_TICKS(0, 10),
+    SPRINT_UP_SWITCH(0, 1),
 
     FIRST_GET_INTO_THE_WORLD(0,1),
 

@@ -1,6 +1,7 @@
 package com.nyaruru.network;
 
 import com.nyaruru.Reference;
+import com.nyaruru.network.toclient.BowknotHandlerPacket;
 import com.nyaruru.network.toclient.PlayerStatsPacketToClient;
 import com.nyaruru.network.toserver.PlayerStatsPacketToServer;
 import net.minecraft.util.ResourceLocation;
@@ -21,5 +22,6 @@ public class NPacketHandler {
         int id = 0;
         CHANNEL.registerMessage(id ++, PlayerStatsPacketToClient.class, PlayerStatsPacketToClient::encode, PlayerStatsPacketToClient::new, PlayerStatsPacketToClient.Handler::onMessage);
         CHANNEL.registerMessage(id ++, PlayerStatsPacketToServer.class, PlayerStatsPacketToServer::encode, PlayerStatsPacketToServer::new, PlayerStatsPacketToServer.Handler::onMessage);
+        CHANNEL.registerMessage(id ++, BowknotHandlerPacket.class, BowknotHandlerPacket::encode, BowknotHandlerPacket::new, BowknotHandlerPacket.Handler::onMessage);
     }
 }

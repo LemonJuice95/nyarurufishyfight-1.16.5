@@ -117,8 +117,9 @@ public class NInputEvents {
             if(PlayerUtil.getResource(player, Resources.FLUORITE_FISH_EYE) == 1) {
                 int sprint_up_times = PlayerUtil.getResource(player, Resources.SPRINT_UP_TIMES);
                 if(sprint_up_times < 2) {
-                    player.push(0.0D, 1.6D, 0.0D);
                     NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_TIMES.ordinal(), sprint_up_times + 1));
+                    NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_TICKS.ordinal(), 8));
+                    NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_SWITCH.ordinal(), 1));
                 }
             }
         }

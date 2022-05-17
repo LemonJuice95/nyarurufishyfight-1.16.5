@@ -8,6 +8,7 @@ import com.nyaruru.entities.api.INyaruruEntity;
 import com.nyaruru.entities.api.INyaruruNPC;
 import com.nyaruru.items.fishes.ItemEsoxAmericanus;
 import com.nyaruru.network.NPacketHandler;
+import com.nyaruru.network.toclient.BowknotHandlerPacket;
 import com.nyaruru.network.toserver.PlayerStatsPacketToServer;
 import com.nyaruru.proxy.ClientProxy;
 import com.nyaruru.utils.PlayerUtil;
@@ -16,6 +17,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
@@ -24,6 +26,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.ForgeHooks;
@@ -35,6 +38,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.network.PacketDistributor;
 import org.lwjgl.system.libc.LibCStdio;
 
 import java.util.List;
@@ -120,7 +124,22 @@ public class NPlayerEvents {
                 if(l.getResource(Resources.HAS_SHIELD) == 1 && l.getResource(Resources.SHIELD_TICK) >= 1200) {
                     ev.player.addEffect(new EffectInstance(Effects.GLOWING, 2, 0));
                 }
+                if(l.getResource(Resources.SPRINT_TICKS) > 0) {
+                    l.addResource(Resources.SPRINT_TICKS, -1);
+                }
             });
+        } else {
+            Vector3d vec3d = ev.player.getDeltaMovement();
+            if(PlayerUtil.getResource(ev.player, Resources.SPRINT_TICKS) == 0) {
+                if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
+                    ev.player.setDeltaMovement(vec3d.x, 0.6, vec3d.z);
+                }
+            } else {
+                if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
+                    NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_SWITCH.ordinal(), 0));
+                    ev.player.setDeltaMovement(vec3d.x, -0.2D, vec3d.z);
+                }
+            }
         }
         NyaruruFishyFight.PROXY.climbUp();
     }
@@ -161,7 +180,12 @@ public class NPlayerEvents {
         } else {
             Entity target = ev.getTarget();
             if(ev.getPlayer().xRot >= 70 && !(target == null)) {
-                ev.getPlayer().setDeltaMovement(0.0D, 0.6D, 0.0D);
+                Vector3d vec3d = ev.getPlayer().getDeltaMovement();
+                ev.getPlayer().setDeltaMovement(vec3d.x, 0.8D, vec3d.z);
+            }
+            if(ev.getPlayer().xRot <= -70 && !(target == null)) {
+                Vector3d vec3d = ev.getTarget().getDeltaMovement();
+                ev.getTarget().setDeltaMovement(vec3d.x, 0.8D, vec3d.z);
             }
         }
     }
@@ -217,27 +241,9 @@ public class NPlayerEvents {
                             }
                         }
                     }
-                }
-            }
-        } else {
-            if(ev.getEntityLiving() instanceof PlayerEntity) {
-                if(PlayerUtil.getResource((PlayerEntity) ev.getEntityLiving(), Resources.HAS_BOWKNOT) == 1) {
-                    Random random = new Random();
-                    for(int i = 0; i < 10; i++)
-                        ev.getEntityLiving().level.addParticle(ParticleTypes.CLOUD, ev.getEntityLiving().getX() + random.nextDouble() + 0.5, ev.getEntityLiving().getY() + 0.2, ev.getEntityLiving().getZ() + random.nextDouble() + 0.5, 0.0, 0.0, 0.0);
-                    float f2 = 4.0F;
-                    int k1 = MathHelper.floor(ev.getEntityLiving().getX() - (double)f2 - 1.0D);
-                    int l1 = MathHelper.floor(ev.getEntityLiving().getX() + (double)f2 + 1.0D);
-                    int i2 = MathHelper.floor(ev.getEntityLiving().getY() - (double)f2 - 1.0D);
-                    int i1 = MathHelper.floor(ev.getEntityLiving().getY() + (double)f2 + 1.0D);
-                    int j2 = MathHelper.floor(ev.getEntityLiving().getZ() - (double)f2 - 1.0D);
-                    int j1 = MathHelper.floor(ev.getEntityLiving().getZ() + (double)f2 + 1.0D);
-                    List<Entity> list = ev.getEntityLiving().level.getEntities(ev.getEntityLiving(), new AxisAlignedBB((double)k1, (double)i2, (double)j2, (double)l1, (double)i1, (double)j1));
-                    for (Entity entity : list) {
-                        if (entity != ev.getEntityLiving()) {
-                            entity.push(0.0D, 0.4D, 0.0D);
-                        }
-                    }
+                    NPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> {
+                        return (ServerPlayerEntity) ev.getEntityLiving();
+                    }), new BowknotHandlerPacket());
                 }
             }
         }
