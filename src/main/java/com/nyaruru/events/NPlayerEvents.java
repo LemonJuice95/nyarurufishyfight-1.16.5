@@ -130,9 +130,9 @@ public class NPlayerEvents {
             });
         } else {
             Vector3d vec3d = ev.player.getDeltaMovement();
-            if(PlayerUtil.getResource(ev.player, Resources.SPRINT_TICKS) == 0) {
+            if(PlayerUtil.getResource(ev.player, Resources.SPRINT_TICKS) > 0) {
                 if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
-                    ev.player.setDeltaMovement(vec3d.x, 0.6, vec3d.z);
+                    ev.player.setDeltaMovement(vec3d.x, 1.0D, vec3d.z);
                 }
             } else {
                 if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
