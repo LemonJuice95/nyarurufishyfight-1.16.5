@@ -13,7 +13,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.16.5'
-group = 'com.nyaruru' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'io.lemonjuice.nyaruru' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'Nyaruru Fishy Fight'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
@@ -93,13 +93,9 @@ minecraft {
             // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
 
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'nyaruru', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 examplemod {
@@ -125,7 +121,6 @@ dependencies {
 
 dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
-
     minecraft 'net.minecraftforge:forge:1.16.5-36.2.28'
 }
 

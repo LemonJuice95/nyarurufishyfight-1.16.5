@@ -42,6 +42,7 @@ public class ClientRegister {
         RegisterKeyBindings();
         RegisterRenderers();
         RegisterRenderTypes();
+
     }
 
     @SubscribeEvent
@@ -83,5 +84,4 @@ public class ClientRegister {
         RenderTypeLookup.setRenderLayer(NBlockRegister.THORNS.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(NBlockRegister.CRYSTAL_CLUSTER.get(), RenderType.cutout());
     }
-
 }
