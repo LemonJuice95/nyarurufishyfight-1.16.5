@@ -13,7 +13,14 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public class BowknotHandlerPacket {
-    public BowknotHandlerPacket() {
+    private static double x;
+    private static double y;
+    private static double z;
+
+    public BowknotHandlerPacket(double x1, double y1, double z1) {
+        x = x1;
+        y = y1;
+        z = z1;
     }
 
     public BowknotHandlerPacket(PacketBuffer buffer) {
@@ -27,20 +34,7 @@ public class BowknotHandlerPacket {
             ctx.get().enqueueWork(() -> {
                 Random random = new Random();
                 for(int i = 0; i < 15; i++)
-                    NyaruruFishyFight.PROXY.getPlayer().level.addParticle(ParticleTypes.CLOUD, NyaruruFishyFight.PROXY.getPlayer().getX() + random.nextDouble(), NyaruruFishyFight.PROXY.getPlayer().getY(), NyaruruFishyFight.PROXY.getPlayer().getZ() + random.nextDouble(), 0.0, 0.0, 0.0);
-                float f2 = 4.0F;
-                int k1 = MathHelper.floor(NyaruruFishyFight.PROXY.getPlayer().getX() - (double)f2 - 1.0D);
-                int l1 = MathHelper.floor(NyaruruFishyFight.PROXY.getPlayer().getX() + (double)f2 + 1.0D);
-                int i2 = MathHelper.floor(NyaruruFishyFight.PROXY.getPlayer().getY() - (double)f2 - 1.0D);
-                int i1 = MathHelper.floor(NyaruruFishyFight.PROXY.getPlayer().getY() + (double)f2 + 1.0D);
-                int j2 = MathHelper.floor(NyaruruFishyFight.PROXY.getPlayer().getZ() - (double)f2 - 1.0D);
-                int j1 = MathHelper.floor(NyaruruFishyFight.PROXY.getPlayer().getZ() + (double)f2 + 1.0D);
-                List<Entity> list = NyaruruFishyFight.PROXY.getPlayer().level.getEntities(NyaruruFishyFight.PROXY.getPlayer(), new AxisAlignedBB((double)k1, (double)i2, (double)j2, (double)l1, (double)i1, (double)j1));
-                for (Entity entity : list) {
-                    if (entity != NyaruruFishyFight.PROXY.getPlayer()) {
-                        entity.push(0.0D, 0.4D, 0.0D);
-                    }
-                }
+                    NyaruruFishyFight.PROXY.getPlayer().level.addParticle(ParticleTypes.CLOUD, x + random.nextDouble() - 0.5, y + 0.3, z + random.nextDouble() - 0.5, 0.0, 0.0, 0.0);
             });
             ctx.get().setPacketHandled(true);
         }

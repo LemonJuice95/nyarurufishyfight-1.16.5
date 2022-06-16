@@ -47,10 +47,8 @@ public class SteamBoosterBlock extends Block {
     @SuppressWarnings("deprecation")
     @Override
     public void entityInside(BlockState state, World world, BlockPos pos, Entity entity) {
-        if(world.isClientSide) {
-            if(state.getValue(TICK) == 2) {
-                entity.push(0.0D, 1.6D, 0.0D);
-            }
+        if(state.getValue(TICK) == 2) {
+            entity.push(0.0D, 1.6D, 0.0D);
         }
     }
 

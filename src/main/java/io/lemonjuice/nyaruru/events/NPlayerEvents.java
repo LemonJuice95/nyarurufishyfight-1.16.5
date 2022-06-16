@@ -15,6 +15,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
@@ -27,12 +28,14 @@ import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerFlyableFallEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.network.PacketDistributor;
 
 import java.util.List;
+import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = Reference.MODID)
 public class NPlayerEvents {
@@ -226,18 +229,48 @@ public class NPlayerEvents {
                     int j1 = MathHelper.floor(ev.getEntityLiving().getZ() + (double)f2 + 1.0D);
                     List<Entity> list = ev.getEntityLiving().level.getEntities(ev.getEntityLiving(), new AxisAlignedBB((double)k1, (double)i2, (double)j2, (double)l1, (double)i1, (double)j1));
                     for (Entity entity : list) {
-                        if (entity != ev.getEntityLiving() && (entity instanceof LivingEntity)) {
+                        if (entity != ev.getEntityLiving() && (entity instanceof LivingEntity) && !(entity instanceof PlayerEntity) && entity.isOnGround()) {
                             if (entity instanceof INyaruruEntity) {
                                 entity.hurt(DamageSource.mobAttack(ev.getEntityLiving()), 5);
                             } else {
                                 entity.hurt(DamageSource.mobAttack(ev.getEntityLiving()), 1);
                             }
+                            entity.push(0.0D, 0.4D, 0.0D);
                         }
                     }
-                    NPacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> {
-                        return (ServerPlayerEntity) ev.getEntityLiving();
-                    }), new BowknotHandlerPacket());
+                    NPacketHandler.CHANNEL.send(PacketDistributor.DIMENSION.with(() -> {
+                        return ev.getEntityLiving().level.dimension();
+                    }), new BowknotHandlerPacket(ev.getEntityLiving().getX(), ev.getEntityLiving().getY(), ev.getEntityLiving().getZ()));
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerFlyableFall(PlayerFlyableFallEvent ev) {
+        if(!ev.getPlayer().level.isClientSide) {
+            if (PlayerUtil.getResource(ev.getPlayer(), Resources.HAS_BOWKNOT) == 1) {
+                float f2 = 4.0F;
+                int k1 = MathHelper.floor(ev.getPlayer().getX() - (double) f2 - 1.0D);
+                int l1 = MathHelper.floor(ev.getPlayer().getX() + (double) f2 + 1.0D);
+                int i2 = MathHelper.floor(ev.getPlayer().getY() - (double) f2 - 1.0D);
+                int i1 = MathHelper.floor(ev.getPlayer().getY() + (double) f2 + 1.0D);
+                int j2 = MathHelper.floor(ev.getPlayer().getZ() - (double) f2 - 1.0D);
+                int j1 = MathHelper.floor(ev.getPlayer().getZ() + (double) f2 + 1.0D);
+                List<Entity> list = ev.getPlayer().level.getEntities(ev.getPlayer(), new AxisAlignedBB((double) k1, (double) i2, (double) j2, (double) l1, (double) i1, (double) j1));
+                for (Entity entity : list) {
+                    if (entity != ev.getPlayer() && (entity instanceof LivingEntity) && !(entity instanceof PlayerEntity) && entity.isOnGround()) {
+                        if (entity instanceof INyaruruEntity) {
+                            entity.hurt(DamageSource.mobAttack(ev.getPlayer()), 5);
+                        } else {
+                            entity.hurt(DamageSource.mobAttack(ev.getPlayer()), 1);
+                        }
+                        entity.push(0.0D, 0.4D, 0.0D);
+                    }
+                }
+                NPacketHandler.CHANNEL.send(PacketDistributor.DIMENSION.with(() -> {
+                    return ev.getPlayer().level.dimension();
+                }), new BowknotHandlerPacket(ev.getPlayer().getX(), ev.getPlayer().getY(), ev.getPlayer().getZ()));
             }
         }
     }
