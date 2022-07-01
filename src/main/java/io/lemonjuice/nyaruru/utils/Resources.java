@@ -26,6 +26,8 @@ public enum Resources {
     SPRINT_UP_SWITCH(0, 1),
 
     FIRST_GET_INTO_THE_WORLD(0,1),
+    RENDER_AS_CAT(0, 1),
+    RENDER_HUD(0, 1),
 
     HAS_DAGGER(0,1),
     HAS_POTION(0, 1),

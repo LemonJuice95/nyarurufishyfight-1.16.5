@@ -29,6 +29,10 @@
   "item.nyaruru.fluorite_fish_eye": "萤石鱼眼",
   "item.nyaruru.aquamarine_fish_eye": "海蓝石鱼眼",
 
+  "item.nyaruru.cat_bell": "猫咪铃铛",
+
+  "item.nyaruru.forest_mst_01_spawn_egg": "幽暗之森敌怪01刷怪蛋",
+
   "//": "ItemTabs",
   "itemGroup.nyaruruWeapons": "咸鱼喵喵 | 武器",
   "itemGroup.nyaruruAccessories": "咸鱼喵喵 | 饰品",
@@ -46,6 +50,7 @@
   "//": "Entities",
   "entity.nyaruru.fish_cross_slash": "咸鱼十字斩",
   "entity.nyaruru.bubble": "气泡",
+  "entity.nyaruru.forest_mst_01": "幽暗之森敌怪01",
 
   "//": "Biomes",
   "biome.nyaruru.dark_forest": "幽暗之森",
@@ -57,7 +62,7 @@
   "tooltip.nyaruru.food.mustard_1": "食用后减少-15%HP",
   "tooltip.nyaruru.food.mustard_2": "并获得2分钟生命恢复I",
   "tooltip.nyaruru.food.garlic": "食用后2分钟内SP回复量增加",
-  "tooltip.nyaruru.food.pepper": "食用后2分钟内缓慢回复必杀技能量",
+  "tooltip.nyaruru.food.chilli": "食用后2分钟内缓慢回复必杀技能量",
   "tooltip.nyaruru.food.surstromming": "食用后获得25秒抗性提升I",
 
   "tooltip.nyaruru.deep_sea_tuna_skill": "必杀技：咸鱼十字斩",
@@ -94,5 +99,14 @@
   "effect.nyaruru.power_regenerating": "必杀技能量恢复",
 
   "//": "Curios API",
-  "curios.identifier.token": "信物"
+  "curios.identifier.token": "信物",
+
+  "//": "Messages",
+  "message.nyaruru.cycleRenderStat": "猫耳与猫尾",
+  "message.nyaruru.on": "开",
+  "message.nyaruru.off": "关",
+  "message.nyaruru.renderHUD": "咸鱼喵喵HUD",
+
+  "//": "CuriosAPI",
+  "curios.identifier.gemstone": "鱼眼"
 }

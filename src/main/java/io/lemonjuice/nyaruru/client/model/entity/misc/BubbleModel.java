@@ -6,6 +6,8 @@ package io.lemonjuice.nyaruru.client.model.entity.misc;
 
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import io.lemonjuice.nyaruru.entities.misc.BubbleEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
@@ -30,7 +32,7 @@ public class BubbleModel extends EntityModel<BubbleEntity> {
 
 	@Override
 	public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-		bb_main.render(matrixStack, buffer, packedLight, packedOverlay);
+		bb_main.render(matrixStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {

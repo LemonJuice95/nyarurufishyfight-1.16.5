@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": {
+        "min": 1.0,
+        "max": 4.0,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nyaruru:copper_coin",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nyaruru:silver_coin",
+          "weight": 4
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nyaruru:gold_coin",
+          "weight": 2
+        }
+      ]
+    }
+  ]
+}

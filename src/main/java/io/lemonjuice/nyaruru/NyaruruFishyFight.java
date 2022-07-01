@@ -13,6 +13,8 @@ import io.lemonjuice.nyaruru.world.biome.NBiomeRegister;
 import io.lemonjuice.nyaruru.world.feature.NFeatureRegister;
 import io.lemonjuice.nyaruru.world.feature.NStructureFeatures;
 import io.lemonjuice.nyaruru.world.structure.NStructureGenerator;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,6 +35,7 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 @Mod(Reference.MODID)
 @Mod.EventBusSubscriber(modid = Reference.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class NyaruruFishyFight {
+    public static final Minecraft MC = Minecraft.getInstance();
     public static final Logger LOGGER = LogManager.getLogger();
     public static CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
@@ -55,12 +58,17 @@ public class NyaruruFishyFight {
     }
 
     private void enqueueIMC(final InterModEnqueueEvent ev) {
-        SlotTypeMessage.Builder builder = SlotTypePreset.CHARM.getMessageBuilder().size(10);
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, builder::build);
+        SlotTypeMessage.Builder builder$charms = SlotTypePreset.CHARM.getMessageBuilder().size(1).priority(998);
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, builder$charms::build);
 
-        /*builder = new SlotTypeMessage.Builder("token").priority(300).size(1).icon(
-                new ResourceLocation(Reference.MODID, "item/empty_token_slot"));
-        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, builder::build);*/
+        /*SlotTypeMessage.Builder builder$token = new SlotTypeMessage.Builder("token").priority(999).size(1)
+                                                .icon(new ResourceLocation(Reference.MODID, "item/slots/empty_token_slot.png"));
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, builder$token::build);*/
+
+        SlotTypeMessage.Builder builder$gems = new SlotTypeMessage.Builder("gemstone").priority(997).size(8)
+                .icon(new ResourceLocation(Reference.MODID, "item/slots/empty_gem_slot"));
+        InterModComms.sendTo("curios", SlotTypeMessage.REGISTER_TYPE, builder$gems::build);
+
     }
 
     @SubscribeEvent

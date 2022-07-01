@@ -2,6 +2,7 @@ package io.lemonjuice.nyaruru.items;
 
 import io.lemonjuice.nyaruru.Reference;
 import io.lemonjuice.nyaruru.blocks.NBlockRegister;
+import io.lemonjuice.nyaruru.entities.NEntityRegister;
 import io.lemonjuice.nyaruru.groups.NGroupRegister;
 import io.lemonjuice.nyaruru.items.gemstones.ItemAquamarineFishEye;
 import io.lemonjuice.nyaruru.items.gemstones.ItemFluoriteFishEye;
@@ -21,6 +22,8 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.rmi.registry.Registry;
+
 public class NItemRegister {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MODID);
 
@@ -33,7 +36,7 @@ public class NItemRegister {
     //Accessories
     public static final RegistryObject<Item> THORN_DAGGER = ITEMS.register("thorn_dagger", ItemThornDagger::new);
     public static final RegistryObject<Item> EMERGENCY_POTION = ITEMS.register("emergency_potion", ItemEmergencyPotion::new);
-    public static final RegistryObject<Item> FORCE_FIELD_SHIELD = ITEMS.register("force_field_shield", ItemForceFieldShield::new);
+//    public static final RegistryObject<Item> FORCE_FIELD_SHIELD = ITEMS.register("force_field_shield", ItemForceFieldShield::new);
     public static final RegistryObject<Item> GRAVITY_BOWKNOT = ITEMS.register("gravity_bowknot", ItemGravityBowknot::new);
 
     //Blocks
@@ -49,6 +52,14 @@ public class NItemRegister {
     public static final RegistryObject<Item> FLUORITE_FISH_EYE = ITEMS.register("fluorite_fish_eye", ItemFluoriteFishEye::new);
     public static final RegistryObject<Item> AQUAMARINE_FISH_EYE = ITEMS.register("aquamarine_fish_eye", ItemAquamarineFishEye::new);
 
+    //Foods
+    public static final RegistryObject<Item> CABBAGE = ITEMS.register("cabbage",() -> new NFoodItem(NFoodItem.CABBAGE));
+    public static final RegistryObject<Item> CANNED_CAT_FOOD = ITEMS.register("canned_cat_food", () -> new NFoodItem(NFoodItem.CANNED_CAT_FOOD));
+    public static final RegistryObject<Item> MUSTARD = ITEMS.register("mustard", () -> new NFoodItem(NFoodItem.MUSTARD));
+    public static final RegistryObject<Item> GARLIC = ITEMS.register("garlic", () -> new NFoodItem(NFoodItem.GARLIC));
+    public static final RegistryObject<Item> CHILLI = ITEMS.register("chilli", () -> new NFoodItem(NFoodItem.CHILLI));
+    public static final RegistryObject<Item> SURSTROMMING = ITEMS.register("surstromming", () -> new NFoodItem(NFoodItem.SURSTROMMING));
+
     //Misc
     public static final RegistryObject<Item> COPPER_CAT_COIN = ITEMS.register("copper_cat_coin", ItemCopperCatCoin::new);
     public static final RegistryObject<Item> SILVER_CAT_COIN = ITEMS.register("silver_cat_coin", ItemSilverCatCoin::new);
@@ -59,11 +70,7 @@ public class NItemRegister {
     public static final RegistryObject<Item> SILVER_COIN = ITEMS.register("silver_coin", ItemSilverCoin::new);
     public static final RegistryObject<Item> GOLD_COIN = ITEMS.register("gold_coin", ItemGoldCoin::new);
 
-    //Foods
-    public static final RegistryObject<Item> CABBAGE = ITEMS.register("cabbage",() -> new NFoodItem(NFoodItem.CABBAGE));
-    public static final RegistryObject<Item> CANNED_CAT_FOOD = ITEMS.register("canned_cat_food", () -> new NFoodItem(NFoodItem.CANNED_CAT_FOOD));
-    public static final RegistryObject<Item> MUSTARD = ITEMS.register("mustard", () -> new NFoodItem(NFoodItem.MUSTARD));
-    public static final RegistryObject<Item> GARLIC = ITEMS.register("garlic", () -> new NFoodItem(NFoodItem.GARLIC));
-    public static final RegistryObject<Item> CHILLI = ITEMS.register("chilli", () -> new NFoodItem(NFoodItem.CHILLI));
-    public static final RegistryObject<Item> SURSTROMMING = ITEMS.register("surstromming", () -> new NFoodItem(NFoodItem.SURSTROMMING));
+    public static final RegistryObject<Item> CAT_BELL = ITEMS.register("cat_bell", ItemCatBell::new);
+
+    public static final RegistryObject<Item> FOREST_MST_01_SPAWN_EGG = ITEMS.register("forest_mst_01_spawn_egg", () -> new NSpawnEggBase(NEntityRegister.FOREST_MST_01, 16777215, 5949630));
 }

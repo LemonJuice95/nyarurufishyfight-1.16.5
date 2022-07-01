@@ -2,6 +2,7 @@ package io.lemonjuice.nyaruru.events;
 
 import io.lemonjuice.nyaruru.NyaruruFishyFight;
 import io.lemonjuice.nyaruru.Reference;
+import io.lemonjuice.nyaruru.capability.CapabilityHandler;
 import io.lemonjuice.nyaruru.entities.api.IHasOwner;
 import io.lemonjuice.nyaruru.entities.api.INyaruruEntity;
 import io.lemonjuice.nyaruru.entities.api.INyaruruNPC;
@@ -45,95 +46,98 @@ public class NPlayerEvents {
     */
     @SubscribeEvent
     public static void tickPlayer(TickEvent.PlayerTickEvent ev) {
-        if(! ev.player.level.isClientSide) {
-            PlayerUtil.getOptManager(ev.player).ifPresent(l -> {
-                if(ev.player.isOnGround() && l.getResource(Resources.SPRINT_UP_TIMES) > 0) {
-                    l.setResource(Resources.SPRINT_UP_TIMES, 0);
-                }
-                if(l.getResource(Resources.SP) < Resources.SP.max && !(l.getResource(Resources.SPRINT_TICKS) != 0 && ev.player.level.getBlockState(ev.player.blockPosition().below()).getBlock() == Blocks.AIR)) {
-                    l.addResource(Resources.SP, 1);
-                }
-                if(l.getResource(Resources.ADDING_MONEY2) > 0) {
-                    if(l.getResource(Resources.ADDING_MONEY) < 30){
-                        l.addResource(Resources.ADDING_MONEY2, -1);
-                        l.addResource(Resources.MONEY, 1);
-                    } else {
-                        int speed = l.getResource(Resources.ADDING_MONEY) / 30;
-                        if (l.getResource(Resources.ADDING_MONEY2) >= speed) {
-                            l.addResource(Resources.ADDING_MONEY2, -speed);
-                            l.addResource(Resources.MONEY, speed);
+        if(ev.player.getCapability(CapabilityHandler.PLAYER_DATA_CAPABILITY) != null) {
+            if (!ev.player.level.isClientSide) {
+                PlayerUtil.getOptManager(ev.player).ifPresent(l -> {
+                    if (ev.player.isOnGround() && l.getResource(Resources.SPRINT_UP_TIMES) > 0) {
+                        l.setResource(Resources.SPRINT_UP_TIMES, 0);
+                    }
+                    if (l.getResource(Resources.SP) < Resources.SP.max && !(l.getResource(Resources.SPRINT_TICKS) != 0 && ev.player.level.getBlockState(ev.player.blockPosition().below()).getBlock() == Blocks.AIR)) {
+                        l.addResource(Resources.SP, 1);
+                    }
+                    if (l.getResource(Resources.ADDING_MONEY2) > 0) {
+                        if (l.getResource(Resources.ADDING_MONEY) < 30) {
+                            l.addResource(Resources.ADDING_MONEY2, -1);
+                            l.addResource(Resources.MONEY, 1);
                         } else {
-                            l.addResource(Resources.MONEY, l.getResource(Resources.ADDING_MONEY2));
-                            l.setResource(Resources.ADDING_MONEY2, 0);
+                            int speed = l.getResource(Resources.ADDING_MONEY) / 30;
+                            if (l.getResource(Resources.ADDING_MONEY2) >= speed) {
+                                l.addResource(Resources.ADDING_MONEY2, -speed);
+                                l.addResource(Resources.MONEY, speed);
+                            } else {
+                                l.addResource(Resources.MONEY, l.getResource(Resources.ADDING_MONEY2));
+                                l.setResource(Resources.ADDING_MONEY2, 0);
+                            }
                         }
+                    } else {
+                        l.setResource(Resources.ADDING_MONEY, 0);
+                    }
+                    if (l.getResource(Resources.SPRINT_TICKS) > 0) {
+                        l.addResource(Resources.SPRINT_TICKS, -1);
+                        if (ev.player.level.getBlockState(ev.player.blockPosition().below()).getBlock() == Blocks.AIR && l.getResource(Resources.SPRINT_TIMES) > 1)
+                            l.addResource(Resources.SP, -12);
+                    }
+                    if (l.getResource(Resources.DOUBLE_SLASH_TICK) > 0) {
+                        l.addResource(Resources.DOUBLE_SLASH_TICK, -1);
+                        l.addResource(Resources.SP, -12);
+                    }
+                    if (l.getResource(Resources.ADDING_POWER) > 0 && l.getResource(Resources.POWER) < Resources.POWER.max) {
+                        l.addResource(Resources.POWER, 1);
+                        l.addResource(Resources.ADDING_POWER, -1);
+                    }
+                    if (l.getResource(Resources.ADDING_POWER) <= -10) {
+                        l.addResource(Resources.POWER, -10);
+                        l.addResource(Resources.ADDING_POWER, 10);
+                    } else if (l.getResource(Resources.ADDING_POWER) < 0) {
+                        l.addResource(Resources.POWER, -1);
+                        l.addResource(Resources.ADDING_POWER, 1);
+                    }
+                    if (l.getResource(Resources.DRAW_FISH_CHOPPING_TICKS) > 0) {
+                        l.addResource(Resources.DRAW_FISH_CHOPPING_TICKS, -1);
+                        ev.player.startAutoSpinAttack(1);
+                    }
+                    if (l.getResource(Resources.CAT_GAZE_FLAG) == 1) {
+                        if (l.getResource(Resources.POWER) > 0) {
+                            if (l.getResource(Resources.GAZE_TICK) >= 4) {
+                                l.setResource(Resources.GAZE_TICK, 0);
+                                l.addResource(Resources.POWER, -1);
+                            } else {
+                                l.addResource(Resources.GAZE_TICK, 1);
+                            }
+                            PlayerEventHandler.HandleCatGazeSkill(ev.player);
+                            if (l.getResource(Resources.GAZE_OVERLAY_SCALE) > 0) {
+                                l.addResource(Resources.GAZE_OVERLAY_SCALE, -1);
+                            }
+                        } else {
+                            l.setResource(Resources.CAT_GAZE_FLAG, 0);
+                        }
+                    } else if (l.getResource(Resources.GAZE_OVERLAY_SCALE) < 10) {
+                        l.addResource(Resources.GAZE_OVERLAY_SCALE, 1);
+                    }
+                    if (l.getResource(Resources.FLYING_FLAG) == 1) {
+                        ev.player.addEffect(new EffectInstance(Effects.SLOW_FALLING, 3, 1));
+                    }
+                    if (l.getResource(Resources.HAS_SHIELD) == 1 && l.getResource(Resources.SHIELD_TICK) >= 1200) {
+                        ev.player.addEffect(new EffectInstance(Effects.GLOWING, 2, 0));
+                    }
+                    if (l.getResource(Resources.SPRINT_TICKS) > 0) {
+                        l.addResource(Resources.SPRINT_TICKS, -1);
+                    }
+                    if (l.getResource(Resources.SPRINT_UP_TICKS) > 0) {
+                        l.addResource(Resources.SPRINT_UP_TICKS, -1);
+                    }
+                });
+            } else {
+                Vector3d vec3d = ev.player.getDeltaMovement();
+                if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_TICKS) > 0) {
+                    if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
+                        ev.player.setDeltaMovement(vec3d.x, 1.0D, vec3d.z);
                     }
                 } else {
-                    l.setResource(Resources.ADDING_MONEY, 0);
-                }
-                if(l.getResource(Resources.SPRINT_TICKS) > 0) {
-                    l.addResource(Resources.SPRINT_TICKS, -1);
-                    if(ev.player.level.getBlockState(ev.player.blockPosition().below()).getBlock() == Blocks.AIR && l.getResource(Resources.SPRINT_TIMES) > 1)
-                        l.addResource(Resources.SP, -12);
-                }
-                if(l.getResource(Resources.DOUBLE_SLASH_TICK) > 0) {
-                    l.addResource(Resources.DOUBLE_SLASH_TICK, -1);
-                    l.addResource(Resources.SP, -12);
-                }
-                if(l.getResource(Resources.ADDING_POWER) > 0 && l.getResource(Resources.POWER) < Resources.POWER.max) {
-                    l.addResource(Resources.POWER, 1);
-                    l.addResource(Resources.ADDING_POWER, -1);
-                }
-                if(l.getResource(Resources.ADDING_POWER) <= -10) {
-                    l.addResource(Resources.POWER, -10);
-                    l.addResource(Resources.ADDING_POWER, 10);
-                } else if(l.getResource(Resources.ADDING_POWER) < 0) {
-                    l.addResource(Resources.POWER, -1);
-                    l.addResource(Resources.ADDING_POWER, 1);
-                }
-                if(l.getResource(Resources.DRAW_FISH_CHOPPING_TICKS) > 0) {
-                    l.addResource(Resources.DRAW_FISH_CHOPPING_TICKS, -1);
-                    ev.player.startAutoSpinAttack(1);
-                }
-                if(l.getResource(Resources.CAT_GAZE_FLAG) == 1) {
-                    if(l.getResource(Resources.POWER) > 0) {
-                        if(l.getResource(Resources.GAZE_TICK) >= 4) {
-                            l.setResource(Resources.GAZE_TICK, 0);
-                            l.addResource(Resources.POWER, -1);
-                        } else {
-                            l.addResource(Resources.GAZE_TICK, 1);
-                        }
-                        PlayerEventHandler.HandleCatGazeSkill(ev.player);
-                        if(l.getResource(Resources.GAZE_OVERLAY_SCALE) > 0) {
-                            l.addResource(Resources.GAZE_OVERLAY_SCALE, -1);
-                        }
-                    } else {
-                        l.setResource(Resources.CAT_GAZE_FLAG, 0);
+                    if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
+                        NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_SWITCH.ordinal(), 0));
+                        ev.player.setDeltaMovement(vec3d.x, -0.2D, vec3d.z);
                     }
-                } else if(l.getResource(Resources.GAZE_OVERLAY_SCALE) < 10) {
-                    l.addResource(Resources.GAZE_OVERLAY_SCALE, 1);
-                } if(l.getResource(Resources.FLYING_FLAG) == 1) {
-                    ev.player.addEffect(new EffectInstance(Effects.SLOW_FALLING, 3, 1));
-                }
-                if(l.getResource(Resources.HAS_SHIELD) == 1 && l.getResource(Resources.SHIELD_TICK) >= 1200) {
-                    ev.player.addEffect(new EffectInstance(Effects.GLOWING, 2, 0));
-                }
-                if(l.getResource(Resources.SPRINT_TICKS) > 0) {
-                    l.addResource(Resources.SPRINT_TICKS, -1);
-                }
-                if(l.getResource(Resources.SPRINT_UP_TICKS) > 0) {
-                    l.addResource(Resources.SPRINT_UP_TICKS, -1);
-                }
-            });
-        } else {
-            Vector3d vec3d = ev.player.getDeltaMovement();
-            if(PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_TICKS) > 0) {
-                if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
-                    ev.player.setDeltaMovement(vec3d.x, 1.0D, vec3d.z);
-                }
-            } else {
-                if (PlayerUtil.getResource(ev.player, Resources.SPRINT_UP_SWITCH) == 1) {
-                    NPacketHandler.CHANNEL.sendToServer(new PlayerStatsPacketToServer(Resources.SPRINT_UP_SWITCH.ordinal(), 0));
-                    ev.player.setDeltaMovement(vec3d.x, -0.2D, vec3d.z);
                 }
             }
         }
@@ -169,19 +173,20 @@ public class NPlayerEvents {
     @SubscribeEvent
     public static void onPlayerAttackEntity(AttackEntityEvent ev) {
         if(! ev.getPlayer().level.isClientSide) {
+            Entity target = ev.getTarget();
             if(PlayerUtil.getResource(ev.getPlayer(), Resources.SPRINT_TICKS) > 0 && PlayerUtil.getResource(ev.getPlayer(), Resources.RED_JADE_FISH_EYE) == 1 && PlayerUtil.getResource(ev.getPlayer(), Resources.SP) > 96) {
                 PlayerUtil.setResource(ev.getPlayer(), Resources.ADDING_POWER, 8);
                 ev.getTarget().hurt(DamageSource.playerAttack(ev.getPlayer()),ev.getPlayer().getItemInHand(Hand.MAIN_HAND).getMaxDamage());
+            }
+            if(ev.getPlayer().xRot <= -70 && !(target == null)) {
+                Vector3d vec3d = ev.getTarget().getDeltaMovement();
+                ev.getTarget().setDeltaMovement(vec3d.x, 0.8D, vec3d.z);
             }
         } else {
             Entity target = ev.getTarget();
             if(ev.getPlayer().xRot >= 70 && !(target == null)) {
                 Vector3d vec3d = ev.getPlayer().getDeltaMovement();
                 ev.getPlayer().setDeltaMovement(vec3d.x, 0.8D, vec3d.z);
-            }
-            if(ev.getPlayer().xRot <= -70 && !(target == null)) {
-                Vector3d vec3d = ev.getTarget().getDeltaMovement();
-                ev.getTarget().setDeltaMovement(vec3d.x, 0.8D, vec3d.z);
             }
         }
     }

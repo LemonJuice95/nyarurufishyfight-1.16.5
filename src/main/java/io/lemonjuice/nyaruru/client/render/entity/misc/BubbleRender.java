@@ -1,6 +1,8 @@
 package io.lemonjuice.nyaruru.client.render.entity.misc;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 import io.lemonjuice.nyaruru.client.model.entity.misc.BubbleModel;
 import io.lemonjuice.nyaruru.entities.misc.BubbleEntity;
@@ -15,6 +17,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.fml.client.registry.IRenderFactory;
 
+@SuppressWarnings("deprecation")
 public class BubbleRender extends EntityRenderer<BubbleEntity> {
     public static final ResourceLocation RES_BUBBLE = StringUtil.resPrefix("textures/entity/bubble.png");
 

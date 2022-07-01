@@ -6,17 +6,24 @@ import io.lemonjuice.nyaruru.client.events.NInputEvents;
 import io.lemonjuice.nyaruru.client.model.baked.FishBakedModel;
 import io.lemonjuice.nyaruru.client.render.entity.misc.BubbleRender;
 import io.lemonjuice.nyaruru.client.render.entity.misc.FishCrossSlashRender;
+import io.lemonjuice.nyaruru.client.render.entity.monster.ForestMst01Render;
 import io.lemonjuice.nyaruru.entities.NEntityRegister;
+import io.lemonjuice.nyaruru.entities.monster.ForestMonster01Entity;
 import io.lemonjuice.nyaruru.items.NItemRegister;
+import io.lemonjuice.nyaruru.items.NSpawnEggBase;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ModelResourceLocation;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -42,7 +49,11 @@ public class ClientRegister {
         RegisterKeyBindings();
         RegisterRenderers();
         RegisterRenderTypes();
+    }
 
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
+        NSpawnEggBase.initUnaddedEggs();
     }
 
     @SubscribeEvent
@@ -63,15 +74,15 @@ public class ClientRegister {
         }
     }
 
+    @SubscribeEvent
+    public static void onAttributeCreate(EntityAttributeCreationEvent ev) {
+        ev.put(NEntityRegister.FOREST_MST_01.get(), ForestMonster01Entity.createAttributes().build());
+    }
+
     public static void RegisterRenderers() {
-        RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.FISH_CROSS_SLASH.get(),
-                (EntityRendererManager manager) -> {
-                    return new FishCrossSlashRender(manager);
-                });
-        RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.BUBBLE.get(),
-                (EntityRendererManager manager) -> {
-                    return new BubbleRender(manager);
-                });
+        RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.FISH_CROSS_SLASH.get(), FishCrossSlashRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.BUBBLE.get(), BubbleRender::new);
+        RenderingRegistry.registerEntityRenderingHandler(NEntityRegister.FOREST_MST_01.get(), ForestMst01Render::new);
     }
 
     public static void RegisterKeyBindings() {

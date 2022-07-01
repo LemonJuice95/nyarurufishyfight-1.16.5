@@ -42,4 +42,13 @@ public class PlayerUtil {
             m.setResource(res, num);
         });
     }
+
+    public static void cycleResource(PlayerEntity player, Resources res) {
+        getOptManager(player).ifPresent(m -> {
+            if(m.getResource(res) == res.max)
+                m.setResource(res, res.min);
+            else
+                m.addResource(res, 1);
+        });
+    }
 }

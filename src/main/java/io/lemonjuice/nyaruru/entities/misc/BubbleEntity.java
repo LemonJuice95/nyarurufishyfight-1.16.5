@@ -5,6 +5,7 @@ import io.lemonjuice.nyaruru.entities.api.INyaruruEnemy;
 import io.lemonjuice.nyaruru.utils.EntityUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.network.IPacket;
@@ -113,19 +114,19 @@ public class BubbleEntity extends Entity implements IHasOwner {
         this.setPos(d0, d1, d2);
     }
 
-    protected void onImpact(RayTraceResult result) {
+    private void onImpact(RayTraceResult result) {
         if (result.getType() == RayTraceResult.Type.ENTITY) {
             Entity target = ((EntityRayTraceResult) result).getEntity();
-            if (! (target instanceof INyaruruEnemy)) {
+            if (! (target instanceof INyaruruEnemy) && this.owner instanceof LivingEntity && target != this.owner) {
                 target.invulnerableTime = 0;
-                target.hurt(DamageSource.MAGIC, 1.8F);
+                target.hurt(DamageSource.mobAttack((LivingEntity) this.owner), 1.8F);
             }
         }
         this.level.broadcastEntityEvent(this, (byte) 3);
     }
 
     @Nullable
-    protected EntityRayTraceResult rayTraceEntities(Vector3d startVec, Vector3d endVec) {
+    private EntityRayTraceResult rayTraceEntities(Vector3d startVec, Vector3d endVec) {
         return EntityUtil.rayTraceEntities(level, this, startVec, endVec, entity ->
                 entity.isPickable()
         );

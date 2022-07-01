@@ -3,6 +3,7 @@ package io.lemonjuice.nyaruru.entities;
 import io.lemonjuice.nyaruru.Reference;
 import io.lemonjuice.nyaruru.entities.misc.BubbleEntity;
 import io.lemonjuice.nyaruru.entities.misc.FishCrossSlashEntity;
+import io.lemonjuice.nyaruru.entities.monster.ForestMonster01Entity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.World;
@@ -22,5 +23,10 @@ public class NEntityRegister {
         return EntityType.Builder.of((EntityType<BubbleEntity> entityType, World worldIn) -> {
             return new BubbleEntity(entityType, worldIn);
         }, EntityClassification.MISC).sized(0.25F, 0.25F).build("bubble");
+    });
+    public static final RegistryObject<EntityType<ForestMonster01Entity>> FOREST_MST_01 = ENTITIES.register("forest_mst_01", () -> {
+        return EntityType.Builder.of((EntityType<ForestMonster01Entity> entityType, World worldIn) -> {
+            return new ForestMonster01Entity(entityType, worldIn);
+        }, EntityClassification.MONSTER).sized(0.875F, 0.65F).build("forest_mst_01");
     });
 }

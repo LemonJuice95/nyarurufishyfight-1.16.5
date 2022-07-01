@@ -12,6 +12,8 @@ public class NCommandHandler {
     @SubscribeEvent
     public static void init(RegisterCommandsEvent ev) {
         CommandDispatcher<CommandSource> dispatcher = ev.getDispatcher();
-        NResourceCommand.register(dispatcher);
+        NResourceDebuggingCommand.register(dispatcher);    //used to debug
+        RenderAsCatCommand.register(dispatcher);
+        NHUDCommand.register(dispatcher);
     }
 }

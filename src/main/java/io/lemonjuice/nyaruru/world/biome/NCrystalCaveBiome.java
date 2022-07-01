@@ -34,7 +34,7 @@ public class NCrystalCaveBiome {
         BiomeGenerationSettings generationSettings = generations.build();
         BiomeGenerationSettingsBuilder wrapper = new BiomeGenerationSettingsBuilder(generationSettings);
 
-        return NBiomeRegister.makeBiome(Biome.Category.EXTREME_HILLS, Biome.RainType.RAIN, 10.0F, 10F, 0.6F, 10.0F,
+        return NBiomeRegister.makeBiome(Biome.Category.EXTREME_HILLS, Biome.RainType.RAIN, 1.0F, 10F, 0.6F, 5.0F,
                 effectBuilder.build(), mobBuilder.build(), wrapper.build());
     }
 }

@@ -13,9 +13,12 @@ import net.minecraft.util.text.StringTextComponent;
 
 import java.util.Collection;
 
-public class NResourceCommand {
+public class NResourceDebuggingCommand {
     public static void register(CommandDispatcher<CommandSource> dispatcher) {
-        LiteralArgumentBuilder<CommandSource> builder = Commands.literal("playerstats").requires((ctx) -> {return ctx.hasPermission(2);});
+        LiteralArgumentBuilder<CommandSource> builder = Commands.literal("playerstats")
+                .requires((ctx) -> {
+                    return ctx.hasPermission(2);
+                });
 
         for(Resources res:Resources.values()) {
             builder.then(Commands.argument("targets", EntityArgument.players())
